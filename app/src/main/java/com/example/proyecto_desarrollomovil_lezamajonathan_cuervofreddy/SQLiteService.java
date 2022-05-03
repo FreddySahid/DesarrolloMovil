@@ -3,16 +3,13 @@ package com.example.proyecto_desarrollomovil_lezamajonathan_cuervofreddy;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import androidx.annotation.Nullable;
-
 import java.util.ArrayList;
 
-
 public class SQLiteService extends SQLiteOpenHelper {
-
     private static final String BDNAME = "hormiga.sqlite";
     private static final int BDVERSION = 1;
     private SQLiteDatabase BD;
@@ -62,5 +59,12 @@ public class SQLiteService extends SQLiteOpenHelper {
 
         return listaUsuarios;
     }
-
+    public Cursor ConsultarUsuPass( String correo, String pass) throws SQLException {
+        Cursor mcursos = null;
+        mcursos =this.getReadableDatabase().query("usuarios",
+                new String[]{"id", "nombre", "correo", "contrasena"}, "correo like '"+
+                correo +"'"+ "and contrasena like '"+
+                pass +"'", null, null, null, null );
+        return mcursos;
+    }
 }

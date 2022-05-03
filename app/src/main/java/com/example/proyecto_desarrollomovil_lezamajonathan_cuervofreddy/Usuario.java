@@ -8,13 +8,14 @@ public class Usuario {
     public String password = "";
 
 
-    public Usuario(int id, String nombre, String email, String password){
+    public Usuario( int id, String nombre, String email, String password){
         this.id = id;
         this.nombre = nombre;
         this.email = email;
         this.password = password;
 
     }
+
 
     public int getId() {
         return id;
@@ -48,4 +49,13 @@ public class Usuario {
     }
 
 
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }

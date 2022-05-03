@@ -23,7 +23,7 @@ public class ActivityRegistro extends AppCompatActivity {
         final EditText textCorreoRegistro = findViewById(R.id.textCorreoRegistro);
         final EditText textPasswordRegistro = findViewById(R.id.textPasswordRegistro);
         final Button btnRegistrase = findViewById(R.id.btnRegistrase);
-        miDB = new SQLiteService ( this);
+       miDB = new SQLiteService ( this);
         btnRegistrase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
