@@ -1,20 +1,32 @@
 package com.example.proyecto_desarrollomovil_lezamajonathan_cuervofreddy;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+
+
     private SQLiteService BD;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        Toolbar tolbar = findViewById(R.id.toolbarmenu);
+        setSupportActionBar(tolbar);
 
         BD = new SQLiteService(this);
 
@@ -31,5 +43,28 @@ public class MainActivity extends AppCompatActivity {
         listaview.setAdapter(adaptador);
 
 
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if(id == R.id.opcion1){
+            Toast.makeText(this, "Opción 1", Toast.LENGTH_LONG).show();
+        }else if(id == R.id.opcion2){
+            Toast.makeText(this, "Opción 2", Toast.LENGTH_LONG).show();
+        }else if(id == R.id.opcion3){
+            Toast.makeText(this, "Opción 3", Toast.LENGTH_LONG).show();
+        }else if(id == R.id.opcion4){
+            Toast.makeText(this, "Opción 4", Toast.LENGTH_LONG).show();
+        }else if(id == R.id.opcion1){
+            Toast.makeText(this, "Opción 5", Toast.LENGTH_LONG).show();
+        }
+        return true;
     }
 }
