@@ -88,7 +88,7 @@ public class SQLiteService extends SQLiteOpenHelper {
 
     public int consultarUsuarioSesion(String correo){
         int idUsuario = 0;
-        Cursor cursor = BD.rawQuery("SELECT id FROM usuarios WHERE (correo = " + correo + ")", null);
+        Cursor cursor = BD.rawQuery("SELECT id FROM usuarios WHERE correo = '" + correo + "'", null);
         if(cursor != null && cursor.getCount()>0) {
             cursor.moveToFirst();
             do {

@@ -12,7 +12,7 @@
         ></item>
     <item
         android:id="@+id/opcion2"
-        android:title="Opción 2"></item>
+        android:title="Registrar gasto"></item>
     <item
         android:id="@+id/opcion3"
         android:title="Opción 3"></item>
