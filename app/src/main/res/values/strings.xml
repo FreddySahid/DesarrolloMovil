@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">MonyBox</string>
-    <string name="app_name">Proyecto_DesarrolloMovil_LezamaJonathan_CuervoFreddy</string>
     <string-array name="tipo_gasto">
         <item>Tipo de gasto</item>
         <item>Crédito</item>
