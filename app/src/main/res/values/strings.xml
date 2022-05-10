@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">MonyBox</string>
+    <string-array name="Presupuesto">
+        <item>Efectivo</item>
+        <item>Credito</item>
+        <item>Debito</item>
+    </string-array>
+
 </resources>

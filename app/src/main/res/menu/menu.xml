@@ -7,7 +7,7 @@
 
     <item
         android:id="@+id/opcion1"
-        android:title="Opción 1"
+        android:title="Registrar presupuesto"
 
         ></item>
     <item
@@ -21,7 +21,7 @@
         android:title="Opción 4"></item>
     <item
         android:id="@+id/opcion5"
-        android:title="Opción 5"></item>
+        android:title="Historial de gastos"></item>
 
 
 </menu>
