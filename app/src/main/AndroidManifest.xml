@@ -13,6 +13,11 @@
             android:name=".PresupuestoActivity"
             android:exported="false" />
         <activity
+            android:name=".RegistrarGasto"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            />
+        <activity
             android:name=".ActivityRegistro"
             android:exported="false"
             android:screenOrientation="portrait" />
