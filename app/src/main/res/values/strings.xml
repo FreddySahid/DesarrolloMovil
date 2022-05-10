@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">Proyecto_DesarrolloMovil_LezamaJonathan_CuervoFreddy</string>
+    <string-array name="tipo_gasto">
+        <item>Tipo de gasto</item>
+        <item>Crédito</item>
+        <item>Débito</item>
+        <item>Efectivo</item>
+    </string-array>
+    <string-array name="categoria">
+        <item>Categoría</item>
+        <item>Alimentos</item>
+        <item>Entretenimiento</item>
+        <item>Gustos/Antojos</item>
+        <item>Higiene</item>
+        <item>Hogar</item>
+        <item>Restaurantes</item>
+        <item>Salud</item>
+        <item>Serviciós básicos</item>
+        <item>Transporte</item>
+        <item>Vestimenta</item>
+        <item>Otros</item>
+    </string-array>
 </resources>
