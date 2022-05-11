@@ -31,11 +31,11 @@ public class MainActivity extends AppCompatActivity {
 
         BD = new SQLiteService(this);
 
-        ArrayList<Usuario> listaUsuario = BD.ConsultaUsuario();
+        ArrayList<Gasto> listaUsuario = BD.ConsultaUsuario();
 
         ArrayList<String> listaUsuarioString = new ArrayList<String>(listaUsuario.size());
-        for(Usuario c: listaUsuario){
-            listaUsuarioString.add(c.getNombre() +"-"+ c.getEmail()+ " - "+ c.getPassword());
+        for(Gasto c: listaUsuario){
+            listaUsuarioString.add(c.getPrecio() +"-"+ c.getCategoria()+ " - Idusuario:"+ c.getIdUsuario());
         }
 
         ArrayAdapter<String> adaptador =  new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listaUsuarioString);

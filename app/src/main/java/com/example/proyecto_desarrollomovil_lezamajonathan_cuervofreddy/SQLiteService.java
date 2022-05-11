@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 
 public class SQLiteService extends SQLiteOpenHelper {
-    private static final String BDNAME = "hormiga.sqlite";
+    private static final String BDNAME = "hormiga2";
     private static final int BDVERSION = 1;
     private SQLiteDatabase BD;
     private static final String USUARIOSTABLA = "CREATE TABLE usuarios(id INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT, correo TEXT, contrasena TEXT)";
@@ -24,6 +24,7 @@ public class SQLiteService extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
         db.execSQL(USUARIOSTABLA);
         db.execSQL(PRESUPUESTOTABLA);
         db.execSQL(GASTOTABLA);
@@ -42,18 +43,22 @@ public class SQLiteService extends SQLiteOpenHelper {
 
         BD.insert("usuarios", null, cv);
     }
-    public ArrayList<Usuario> ConsultaUsuario(){
-        ArrayList<Usuario> listaUsuarios = new ArrayList<Usuario>();
-        Cursor cursor = BD.rawQuery("SELECT id, nombre, correo, contrasena FROM usuarios", null);
+    public ArrayList<Gasto> ConsultaUsuario(){
+        ArrayList<Gasto> listaUsuarios = new ArrayList<Gasto>();
+        Cursor cursor = BD.rawQuery("SELECT idGasto, tipogasto, categoria, comentario, fecha, precio, idusuario, idpresupuesto FROM gasto", null);
         if(cursor != null && cursor.getCount()>0){
             cursor.moveToFirst();
             do{
-                int id = cursor.getInt(cursor.getColumnIndexOrThrow("id"));
-                String nombre = cursor.getString(cursor.getColumnIndexOrThrow("nombre"));
-                String correo = cursor.getString(cursor.getColumnIndexOrThrow("correo"));
-                String contrasena = cursor.getString(cursor.getColumnIndexOrThrow("contrasena"));
+                int id = cursor.getInt(cursor.getColumnIndexOrThrow("idGasto"));
+                String tipogasto = cursor.getString(cursor.getColumnIndexOrThrow("tipogasto"));
+                String categoria = cursor.getString(cursor.getColumnIndexOrThrow("categoria"));
+                String comentario = cursor.getString(cursor.getColumnIndexOrThrow("comentario"));
+                String fecha = cursor.getString(cursor.getColumnIndexOrThrow("fecha"));
+                float precio = cursor.getFloat(cursor.getColumnIndexOrThrow("precio"));
+                int idusuario = cursor.getInt(cursor.getColumnIndexOrThrow("idusuario"));
+                int idpresupuesto = cursor.getInt(cursor.getColumnIndexOrThrow("idpresupuesto"));
 
-                Usuario canc = new Usuario(id, nombre, correo, contrasena);
+                Gasto canc = new Gasto(id, tipogasto, categoria, comentario,fecha, precio,idusuario,idpresupuesto );
 
                 listaUsuarios.add(canc);
             }while (cursor.moveToNext());
