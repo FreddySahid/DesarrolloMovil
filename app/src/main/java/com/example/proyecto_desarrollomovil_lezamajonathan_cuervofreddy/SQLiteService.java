@@ -91,6 +91,20 @@ public class SQLiteService extends SQLiteOpenHelper {
         BD.insert("gasto", null, cv);
     }
 
+
+    public void insertarPresupuesto(String tipopresupuesto, float saldo,
+                                    String iniciopresupuesto, String  finpresupuesto, float meta, int idusuario){
+        ContentValues cv = new ContentValues();
+        cv.put("tipopresupuesto", tipopresupuesto);
+        cv.put("saldo", saldo);
+        cv.put("iniciopresupuesto", iniciopresupuesto);
+        cv.put("finpresupuesto", finpresupuesto);
+        cv.put("meta", meta);
+        cv.put("idusuario", idusuario);
+
+        BD.insert("presupuesto", null, cv);
+    }
+
     public int consultarUsuarioSesion(String correo){
         int idUsuario = 0;
         Cursor cursor = BD.rawQuery("SELECT id FROM usuarios WHERE correo = '" + correo + "'", null);
@@ -102,4 +116,5 @@ public class SQLiteService extends SQLiteOpenHelper {
         }
         return idUsuario;
     }
+
 }

@@ -33,11 +33,17 @@ public class ActivityRegistro extends AppCompatActivity {
                 String password = textPasswordRegistro.getText().toString();
 
                 miDB.insertarUsuarios(nombre, correo, password);
+                if(nombre.equals("") || correo.equals("") || password.equals("")){
+                    Toast.makeText(ActivityRegistro.this, "Debe llenar todos los campos", Toast.LENGTH_LONG).show();
 
-                Toast.makeText(ActivityRegistro.this, "Se guardo Usuario", Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(ActivityRegistro.this, "Se guardo Usuario", Toast.LENGTH_LONG).show();
 
-                Intent intent = new Intent(ActivityRegistro.this, MainActivity.class);
-                startActivity(intent);
+                    Intent intent = new Intent(ActivityRegistro.this, MainActivity.class);
+                    startActivity(intent);
+                }
+
+
             }
         });
 

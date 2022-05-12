@@ -33,17 +33,25 @@ public class MainLogin extends AppCompatActivity {
             public void onClick(View view) {
                 EditText textCorreo = findViewById(R.id.textCorreo);
                 EditText textPassword = findViewById(R.id.textPassword);
+                String correo = textCorreo.getText().toString();
+                String password = textPassword.getText().toString();
 
                 Cursor cursor = helper.ConsultarUsuPass(textCorreo.getText().toString(), textPassword.getText().toString());
-                if(cursor.getCount()>0){
-                    editor.putString("sesion", textCorreo.getText().toString());
-                    editor.apply();
+                if (correo.equals("") || textPassword.equals("")){
+                    Toast.makeText(getApplicationContext(),  "Debes llenar todos los campos", Toast.LENGTH_LONG).show();
 
-                    Intent intent = new Intent(MainLogin.this, MainActivity.class);
-                    startActivity(intent);
-                }else{
-                    Toast.makeText(getApplicationContext(),  "Correo y/o Contraseña incorrectos", Toast.LENGTH_LONG).show();
+                }else {
+                    if(cursor.getCount()>0){
+                        editor.putString("sesion",correo );
+                        editor.apply();
 
+                        Intent intent = new Intent(MainLogin.this, MainActivity.class);
+                        startActivity(intent);
+                    }
+                    else{
+                        Toast.makeText(getApplicationContext(),  "Correo y/o Contraseña incorrectos", Toast.LENGTH_LONG).show();
+
+                    }
                 }
                 textCorreo.setText("");
                 textPassword.setText("");

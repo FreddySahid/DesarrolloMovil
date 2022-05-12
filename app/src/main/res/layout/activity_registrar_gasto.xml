@@ -5,21 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RegistrarGasto">
+    <include
+        android:id="@+id/toolbarmenu"
+        layout="@layout/toolbarmenu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Registrar gasto"
-        android:textSize="25sp"
         android:entries="@array/categoria"
+        android:text="Registrar gasto"
         android:textColor="@color/green_500"
+        android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.047" />
+        app:layout_constraintVertical_bias="0.08" />
 
     <TextView
         android:id="@+id/textView5"
@@ -32,21 +39,21 @@
         app:layout_constraintHorizontal_bias="0.076"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.161" />
+        app:layout_constraintVertical_bias="0.192" />
 
     <Spinner
         android:id="@+id/spTipoDato"
         android:layout_width="214dp"
         android:layout_height="48dp"
         android:entries="@array/tipo_gasto"
-        android:textSize="18sp"
         android:textAlignment="center"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.873"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.147" />
+        app:layout_constraintVertical_bias="0.163" />
 
     <TextView
         android:id="@+id/textView7"
@@ -122,7 +129,7 @@
         android:layout_width="214dp"
         android:layout_height="48dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="date"
         android:text="DD/MM/AAAA"
         android:textAlignment="center"
         android:textSize="18sp"
@@ -138,7 +145,7 @@
         android:layout_width="214dp"
         android:layout_height="48dp"
         android:ems="10"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:text="Cantidad total"
         android:textAlignment="center"
         android:textSize="18sp"
