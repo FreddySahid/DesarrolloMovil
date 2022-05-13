@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<String> listaUsuarioString = new ArrayList<String>(listaUsuario.size());
         for(Gasto c: listaUsuario){
-            listaUsuarioString.add("Categoria: "+c.getCategoria()+", Precio: "+ c.getPrecio() + ", fecha: "+ c.getFecha() );
+            listaUsuarioString.add("Categoria: "+c.getCategoria()+ ", Gasto: "+c.getComentario()+", Precio: "+ c.getPrecio() + ", fecha: "+ c.getFecha()+ "Usuario: "+ c.getIdUsuario() );
         }
 
         ArrayAdapter<String> adaptador =  new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listaUsuarioString);
@@ -79,6 +79,9 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Opción 4", Toast.LENGTH_LONG).show();
         }else if(id == R.id.opcion5){
             Toast.makeText(this, "Ya se encuentra ahí.", Toast.LENGTH_LONG).show();
+        }else if (id == R.id.opcion6){
+            Intent intent = new Intent(MainActivity.this, MainLogin.class);
+            startActivity(intent);
         }
         return true;
     }

@@ -136,6 +136,9 @@ public class RegistrarGasto extends AppCompatActivity {
         }else if(id == R.id.opcion5){
             Intent intent = new Intent(RegistrarGasto.this, MainActivity.class);
             startActivity(intent);
+        }else if (id == R.id.opcion6){
+            Intent intent = new Intent(RegistrarGasto.this, MainLogin.class);
+            startActivity(intent);
         }
         return true;
     }

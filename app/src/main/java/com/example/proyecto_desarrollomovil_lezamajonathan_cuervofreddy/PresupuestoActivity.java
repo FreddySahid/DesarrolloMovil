@@ -116,6 +116,9 @@ public class PresupuestoActivity extends AppCompatActivity {
         }else if(id == R.id.opcion5){
             Intent intent = new Intent(PresupuestoActivity.this, MainActivity.class);
             startActivity(intent);
+        }else if (id == R.id.opcion6){
+            Intent intent = new Intent(PresupuestoActivity.this, MainLogin.class);
+            startActivity(intent);
         }
         return true;
     }

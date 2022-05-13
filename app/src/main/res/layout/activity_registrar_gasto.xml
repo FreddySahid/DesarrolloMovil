@@ -101,7 +101,7 @@
         android:layout_height="48dp"
         android:ems="10"
         android:inputType="textMultiLine"
-        android:text="Comentario corto"
+
         android:textSize="18sp"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -130,7 +130,7 @@
         android:layout_height="48dp"
         android:ems="10"
         android:inputType="date"
-        android:text="DD/MM/AAAA"
+        android:text="YYYY/MM/DD"
         android:textAlignment="center"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -146,7 +146,7 @@
         android:layout_height="48dp"
         android:ems="10"
         android:inputType="numberDecimal"
-        android:text="Cantidad total"
+
         android:textAlignment="center"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
