@@ -1,16 +1,18 @@
 package com.example.proyecto_desarrollomovil_lezamajonathan_cuervofreddy;
 
+import java.util.Date;
+
 public class Gasto {
     private int idGasto;
     private String tipoGasto;
     private String categoria;
     private String comentario;
-    private String fecha;
+    private Date fecha;
     private float precio;
     private int idUsuario;
     private int idPresupuesto;
 
-    public Gasto(int idGasto, String tipoGasto, String categoria, String comentario, String fecha, float precio, int idUsuario, int idPresupuesto) {
+    public Gasto(int idGasto, String tipoGasto, String categoria, String comentario, Date fecha, float precio, int idUsuario, int idPresupuesto) {
         this.idGasto = idGasto;
         this.tipoGasto = tipoGasto;
         this.categoria = categoria;
@@ -53,11 +55,11 @@ public class Gasto {
         this.comentario = comentario;
     }
 
-    public String getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 

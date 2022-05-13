@@ -8,14 +8,15 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class SQLiteService extends SQLiteOpenHelper {
     private static final String BDNAME = "hormiga2";
     private static final int BDVERSION = 1;
     private SQLiteDatabase BD;
     private static final String USUARIOSTABLA = "CREATE TABLE usuarios(id INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT, correo TEXT, contrasena TEXT)";
-    private static final String PRESUPUESTOTABLA = "CREATE TABLE presupuesto(idpresupuesto INTEGER PRIMARY KEY AUTOINCREMENT, tipopresupuesto TEXT, saldo REAL, iniciopresupuesto TEXT, finpresupuesto TEXT, meta TEXT, idusuario INTEGER, FOREIGN KEY(idusuario) REFERENCES usuarios(id))";
-    private static final String GASTOTABLA = "CREATE TABLE gasto(idGasto INTEGER PRIMARY KEY AUTOINCREMENT, tipogasto TEXT, categoria TEXT, comentario TEXT, fecha TEXT, precio REAL, idusuario INTEGER, idpresupuesto INTEGER, FOREIGN KEY(idusuario) REFERENCES usuarios(id), FOREIGN KEY(idpresupuesto) REFERENCES presupuesto(idpresupuesto))";
+    private static final String PRESUPUESTOTABLA = "CREATE TABLE presupuesto(idpresupuesto INTEGER PRIMARY KEY AUTOINCREMENT, tipopresupuesto TEXT, saldo REAL, iniciopresupuesto DATE, finpresupuesto DATE, meta Real, idusuario INTEGER, FOREIGN KEY(idusuario) REFERENCES usuarios(id))";
+    private static final String GASTOTABLA = "CREATE TABLE gasto(idGasto INTEGER PRIMARY KEY AUTOINCREMENT, tipogasto TEXT, categoria TEXT, comentario TEXT, fecha DATE, precio REAL, idusuario INTEGER, idpresupuesto INTEGER, FOREIGN KEY(idusuario) REFERENCES usuarios(id), FOREIGN KEY(idpresupuesto) REFERENCES presupuesto(idpresupuesto))";
 
     public SQLiteService(Context context){
         super(context, BDNAME,  null, BDVERSION);
@@ -24,7 +25,7 @@ public class SQLiteService extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
+        db.execSQL("DROP TABLE IF EXISTS presupuesto");
         db.execSQL(USUARIOSTABLA);
         db.execSQL(PRESUPUESTOTABLA);
         db.execSQL(GASTOTABLA);
@@ -58,9 +59,9 @@ public class SQLiteService extends SQLiteOpenHelper {
                 int idusuario = cursor.getInt(cursor.getColumnIndexOrThrow("idusuario"));
                 int idpresupuesto = cursor.getInt(cursor.getColumnIndexOrThrow("idpresupuesto"));
 
-                Gasto canc = new Gasto(id, tipogasto, categoria, comentario,fecha, precio,idusuario,idpresupuesto );
+               // Gasto canc = new Gasto(id, tipogasto, categoria, comentario,fecha, precio,idusuario,idpresupuesto );
 
-                listaUsuarios.add(canc);
+              //  listaUsuarios.add(canc);
             }while (cursor.moveToNext());
         }
 
@@ -83,7 +84,7 @@ public class SQLiteService extends SQLiteOpenHelper {
         cv.put("tipoGasto", tipoGasto);
         cv.put("categoria", categoria);
         cv.put("comentario", comentario);
-        cv.put("fecha", fecha);
+        cv.put("fecha", String.valueOf(fecha));
         cv.put("precio", precio);
         cv.put("idusuario", idUsuario);
         cv.put("idpresupuesto", idPresupuesto);
@@ -93,12 +94,12 @@ public class SQLiteService extends SQLiteOpenHelper {
 
 
     public void insertarPresupuesto(String tipopresupuesto, float saldo,
-                                    String iniciopresupuesto, String  finpresupuesto, float meta, int idusuario){
+                                    String iniciopresupuesto, String finpresupuesto, float meta, int idusuario){
         ContentValues cv = new ContentValues();
         cv.put("tipopresupuesto", tipopresupuesto);
         cv.put("saldo", saldo);
-        cv.put("iniciopresupuesto", iniciopresupuesto);
-        cv.put("finpresupuesto", finpresupuesto);
+        cv.put("iniciopresupuesto", String.valueOf(iniciopresupuesto));
+        cv.put("finpresupuesto", String.valueOf(finpresupuesto));
         cv.put("meta", meta);
         cv.put("idusuario", idusuario);
 

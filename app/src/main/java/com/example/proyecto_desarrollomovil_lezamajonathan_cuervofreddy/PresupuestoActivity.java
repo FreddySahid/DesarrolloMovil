@@ -16,6 +16,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class PresupuestoActivity extends AppCompatActivity {
 
     SQLiteService helper;
@@ -60,7 +63,6 @@ public class PresupuestoActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String texttipoPresupuesto = tipoPresupuesto.getSelectedItem().toString();
                 String textSaldo = saldo.getText().toString();
-
                 String textFechaInicio = inicioPresupuesto.getText().toString();
                 String textFechaFin = finPresupuesto.getText().toString();
                 String textMeta = meta.getText().toString();
@@ -77,6 +79,7 @@ public class PresupuestoActivity extends AppCompatActivity {
                 }else{
                     float numMeta = Float.parseFloat(textMeta);
                     float numSaldo = Float.parseFloat(textSaldo); //Float.parseFloat(textPrecio);
+
 
 
                     helper.insertarPresupuesto(texttipoPresupuesto, numSaldo, textFechaInicio, textFechaFin, numMeta, idUser);
