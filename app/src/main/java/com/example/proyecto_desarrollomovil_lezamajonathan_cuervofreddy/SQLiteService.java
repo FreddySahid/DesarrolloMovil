@@ -7,6 +7,8 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -44,12 +46,13 @@ public class SQLiteService extends SQLiteOpenHelper {
 
         BD.insert("usuarios", null, cv);
     }
-    public ArrayList<Gasto> ConsultaUsuario(){
+    public ArrayList<Gasto> ConsultarGasto() throws ParseException {
         ArrayList<Gasto> listaUsuarios = new ArrayList<Gasto>();
         Cursor cursor = BD.rawQuery("SELECT idGasto, tipogasto, categoria, comentario, fecha, precio, idusuario, idpresupuesto FROM gasto", null);
         if(cursor != null && cursor.getCount()>0){
             cursor.moveToFirst();
             do{
+
                 int id = cursor.getInt(cursor.getColumnIndexOrThrow("idGasto"));
                 String tipogasto = cursor.getString(cursor.getColumnIndexOrThrow("tipogasto"));
                 String categoria = cursor.getString(cursor.getColumnIndexOrThrow("categoria"));
@@ -59,9 +62,10 @@ public class SQLiteService extends SQLiteOpenHelper {
                 int idusuario = cursor.getInt(cursor.getColumnIndexOrThrow("idusuario"));
                 int idpresupuesto = cursor.getInt(cursor.getColumnIndexOrThrow("idpresupuesto"));
 
-               // Gasto canc = new Gasto(id, tipogasto, categoria, comentario,fecha, precio,idusuario,idpresupuesto );
 
-              //  listaUsuarios.add(canc);
+              Gasto canc = new Gasto(id, tipogasto, categoria, comentario,fecha, precio,idusuario,idpresupuesto );
+
+              listaUsuarios.add(canc);
             }while (cursor.moveToNext());
         }
 

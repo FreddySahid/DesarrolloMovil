@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.database.SQLException;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -13,7 +14,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,11 +35,19 @@ public class MainActivity extends AppCompatActivity {
 
         BD = new SQLiteService(this);
 
-        ArrayList<Gasto> listaUsuario = BD.ConsultaUsuario();
+
+        ArrayList<Gasto> listaUsuario = null;
+
+        try {
+            listaUsuario = BD.ConsultarGasto();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
 
         ArrayList<String> listaUsuarioString = new ArrayList<String>(listaUsuario.size());
         for(Gasto c: listaUsuario){
-            listaUsuarioString.add(c.getPrecio() +"-"+ c.getCategoria()+ " - Idusuario:"+ c.getIdUsuario());
+            listaUsuarioString.add("Categoria: "+c.getCategoria()+", Precio: "+ c.getPrecio() + ", fecha: "+ c.getFecha() );
         }
 
         ArrayAdapter<String> adaptador =  new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listaUsuarioString);

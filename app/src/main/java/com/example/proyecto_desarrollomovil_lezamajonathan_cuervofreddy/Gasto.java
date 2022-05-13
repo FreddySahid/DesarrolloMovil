@@ -7,12 +7,12 @@ public class Gasto {
     private String tipoGasto;
     private String categoria;
     private String comentario;
-    private Date fecha;
+    private String fecha;
     private float precio;
     private int idUsuario;
     private int idPresupuesto;
 
-    public Gasto(int idGasto, String tipoGasto, String categoria, String comentario, Date fecha, float precio, int idUsuario, int idPresupuesto) {
+    public Gasto(int idGasto, String tipoGasto, String categoria, String comentario, String fecha, float precio, int idUsuario, int idPresupuesto) {
         this.idGasto = idGasto;
         this.tipoGasto = tipoGasto;
         this.categoria = categoria;
@@ -55,11 +55,11 @@ public class Gasto {
         this.comentario = comentario;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
