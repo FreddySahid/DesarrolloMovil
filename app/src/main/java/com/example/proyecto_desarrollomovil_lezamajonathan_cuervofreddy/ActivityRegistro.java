@@ -2,7 +2,9 @@ package com.example.proyecto_desarrollomovil_lezamajonathan_cuervofreddy;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -12,12 +14,16 @@ import android.widget.Toast;
 
 public class ActivityRegistro extends AppCompatActivity {
     private SQLiteService miDB;
-
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
+
+        preferences = this.getSharedPreferences("sesiones", Context.MODE_PRIVATE);
+        editor = preferences.edit();
 
         final EditText textNombreRegistro = findViewById(R.id.textNombreRegistro);
         final EditText textCorreoRegistro = findViewById(R.id.textCorreoRegistro);
@@ -38,7 +44,8 @@ public class ActivityRegistro extends AppCompatActivity {
 
                 }else{
                     Toast.makeText(ActivityRegistro.this, "Se guardo Usuario", Toast.LENGTH_LONG).show();
-
+                    editor.putString("sesion",correo );
+                    editor.apply();
                     Intent intent = new Intent(ActivityRegistro.this, MainActivity.class);
                     startActivity(intent);
                 }
