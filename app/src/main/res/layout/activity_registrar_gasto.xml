@@ -129,8 +129,8 @@
         android:layout_width="214dp"
         android:layout_height="48dp"
         android:ems="10"
-        android:inputType="date"
-        android:text="YYYY/MM/DD"
+
+        android:focusable="false"
         android:textAlignment="center"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"

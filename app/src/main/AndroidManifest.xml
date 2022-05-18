@@ -11,7 +11,9 @@
         android:theme="@style/Theme.Proyecto_DesarrolloMovil_LezamaJonathan_CuervoFreddy">
         <activity
             android:name=".PresupuestoActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".RegistrarGasto"
             android:exported="false"
