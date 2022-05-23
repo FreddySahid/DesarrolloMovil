@@ -13,9 +13,21 @@ public class Usuario {
         this.nombre = nombre;
         this.email = email;
         this.password = password;
-
     }
 
+    public Usuario() {
+        this.id = 0;
+        this.nombre = "";
+        this.email = "";
+        this.password = "";
+    }
+
+    public Usuario(Usuario user){
+        this.id = user.getId();
+        this.nombre = user.getNombre();
+        this.email = user.getEmail();
+        this.password = user.getPassword();
+    }
 
     public int getId() {
         return id;

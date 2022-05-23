@@ -10,13 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Proyecto_DesarrolloMovil_LezamaJonathan_CuervoFreddy">
         <activity
+            android:name=".ModificarDatos"
+            android:exported="false" />
+        <activity
             android:name=".PresupuestoActivity"
             android:exported="false" />
         <activity
             android:name=".RegistrarGasto"
             android:exported="false"
-            android:screenOrientation="portrait"
-            />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ActivityRegistro"
             android:exported="false"
