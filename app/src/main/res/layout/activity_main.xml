@@ -67,19 +67,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.441" />
 
-    <EditText
-        android:id="@+id/textHistorialTipogasto"
-        android:layout_width="150dp"
+    <Spinner
+        android:id="@+id/spTipoDatoLista"
+        android:layout_width="170dp"
         android:layout_height="46dp"
-        android:backgroundTint="@color/green_500"
-        android:ems="10"
-        android:inputType="textPersonName"
+        android:entries="@array/tipo_gasto"
+        android:textAlignment="center"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.789"
+        app:layout_constraintHorizontal_bias="0.817"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.22" />
+        app:layout_constraintVertical_bias="0.2" />
 
     <EditText
         android:id="@+id/textHistorialInicioGasto"
@@ -87,7 +87,7 @@
         android:layout_height="46dp"
         android:backgroundTint="@color/green_500"
         android:ems="10"
-        android:inputType="date"
+        android:focusable="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.789"
@@ -101,7 +101,7 @@
         android:layout_height="46dp"
         android:backgroundTint="@color/green_500"
         android:ems="10"
-        android:inputType="date"
+        android:focusable="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.789"
@@ -124,6 +124,7 @@
         android:layout_width="120dp"
         android:layout_height="60dp"
         android:backgroundTint="@color/green_700"
+        android:onClick="Buscar"
         android:text="Buscar"
         app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"

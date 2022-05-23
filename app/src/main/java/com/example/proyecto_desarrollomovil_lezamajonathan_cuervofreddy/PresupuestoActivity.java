@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,11 +13,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class PresupuestoActivity extends AppCompatActivity {
@@ -55,6 +58,76 @@ public class PresupuestoActivity extends AppCompatActivity {
         inicioPresupuesto = findViewById(R.id.dateInicioPresupuesto);
         finPresupuesto = findViewById(R.id.dateFinPresupuesto);
         meta = findViewById(R.id.textMeta);
+
+        Calendar calendar = Calendar.getInstance();
+        final int year = calendar.get(Calendar.YEAR);
+        final int month = calendar.get(Calendar.MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+
+
+        inicioPresupuesto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        PresupuestoActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayofMonth) {
+                        month = month+1;
+                        String date;
+                        if(month<10 ){
+                            if(dayofMonth<10){
+                                date = year+"/0"+month+"/0"+dayofMonth;
+                            }else{
+                                date = year+"/0"+month+"/"+dayofMonth;
+                            }
+
+                        }   else {
+                            if(dayofMonth<10){
+                                date = year+"/"+month+"/0"+dayofMonth;
+                            }else{
+                                date = year+"/"+month+"/"+dayofMonth;
+                            }
+                        }
+
+                        inicioPresupuesto.setText(date);
+                    }
+                }, year, month, day);
+                datePickerDialog.show();
+
+            }
+        });
+        finPresupuesto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        PresupuestoActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayofMonth) {
+                        month = month+1;
+                        String date;
+                        if(month<10 ){
+                            if(dayofMonth<10){
+                                date = year+"/0"+month+"/0"+dayofMonth;
+                            }else{
+                                date = year+"/0"+month+"/"+dayofMonth;
+                            }
+
+                        }   else {
+                            if(dayofMonth<10){
+                                date = year+"/"+month+"/0"+dayofMonth;
+                            }else{
+                                date = year+"/"+month+"/"+dayofMonth;
+                            }
+                        }
+
+                        finPresupuesto.setText(date);
+                    }
+                }, year, month, day);
+                datePickerDialog.show();
+
+            }
+        });
 
 
         Button btnGuardar = findViewById(R.id.btnRegistrarPresupuesto);

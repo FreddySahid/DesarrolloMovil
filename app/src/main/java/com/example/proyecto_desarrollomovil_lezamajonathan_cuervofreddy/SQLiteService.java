@@ -46,32 +46,7 @@ public class SQLiteService extends SQLiteOpenHelper {
 
         BD.insert("usuarios", null, cv);
     }
-    public ArrayList<Gasto> ConsultarGasto() throws ParseException {
-        ArrayList<Gasto> listaUsuarios = new ArrayList<Gasto>();
-        Cursor cursor = BD.rawQuery("SELECT idGasto, tipogasto, categoria, comentario, fecha, precio, idusuario, idpresupuesto FROM gasto", null);
-        if(cursor != null && cursor.getCount()>0){
-            cursor.moveToFirst();
-            do{
 
-                int id = cursor.getInt(cursor.getColumnIndexOrThrow("idGasto"));
-                String tipogasto = cursor.getString(cursor.getColumnIndexOrThrow("tipogasto"));
-                String categoria = cursor.getString(cursor.getColumnIndexOrThrow("categoria"));
-                String comentario = cursor.getString(cursor.getColumnIndexOrThrow("comentario"));
-                String fecha = cursor.getString(cursor.getColumnIndexOrThrow("fecha"));
-                float precio = cursor.getFloat(cursor.getColumnIndexOrThrow("precio"));
-                int idusuario = cursor.getInt(cursor.getColumnIndexOrThrow("idusuario"));
-                int idpresupuesto = cursor.getInt(cursor.getColumnIndexOrThrow("idpresupuesto"));
-
-
-              Gasto canc = new Gasto(id, tipogasto, categoria, comentario,fecha, precio,idusuario,idpresupuesto );
-
-              listaUsuarios.add(canc);
-            }while (cursor.moveToNext());
-        }
-
-
-        return listaUsuarios;
-    }
     public Cursor ConsultarUsuPass( String correo, String pass) throws SQLException {
         Cursor mcursos = null;
         mcursos =this.getReadableDatabase().query("usuarios",
@@ -120,6 +95,33 @@ public class SQLiteService extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
         }
         return idUsuario;
+    }
+
+    public ArrayList<Gasto> ConsultarGasto( int idUsuario, String gasto, String fecha1, String fecha2 ) throws ParseException {
+        ArrayList<Gasto> listaGastoUsuario = new ArrayList<Gasto>();
+        Cursor cursor = BD.rawQuery("SELECT idGasto, tipogasto, categoria, comentario, fecha, precio, idusuario, idpresupuesto FROM gasto where idusuario = '"+idUsuario+"' AND tipogasto = '"+ gasto+ "' AND fecha BETWEEN '"+fecha1+"' AND '"+ fecha2+"'", null);
+        if(cursor != null && cursor.getCount()>0){
+            cursor.moveToFirst();
+            do{
+
+                int id = cursor.getInt(cursor.getColumnIndexOrThrow("idGasto"));
+                String tipogasto = cursor.getString(cursor.getColumnIndexOrThrow("tipogasto"));
+                String categoria = cursor.getString(cursor.getColumnIndexOrThrow("categoria"));
+                String comentario = cursor.getString(cursor.getColumnIndexOrThrow("comentario"));
+                String fecha = cursor.getString(cursor.getColumnIndexOrThrow("fecha"));
+                float precio = cursor.getFloat(cursor.getColumnIndexOrThrow("precio"));
+                int idusuario = cursor.getInt(cursor.getColumnIndexOrThrow("idusuario"));
+                int idpresupuesto = cursor.getInt(cursor.getColumnIndexOrThrow("idpresupuesto"));
+
+
+                Gasto canc = new Gasto(id, tipogasto, categoria, comentario,fecha, precio,idusuario,idpresupuesto );
+
+                listaGastoUsuario.add(canc);
+            }while (cursor.moveToNext());
+        }
+
+
+        return listaGastoUsuario;
     }
 
     // @Start Modificar datos personales

@@ -51,6 +51,52 @@ public class RegistrarGasto extends AppCompatActivity {
         editor = preferences.edit();
         String correo = preferences.getString("sesion", "");
 
+        tipoGasto = (Spinner) findViewById(R.id.spTipoDato);
+        categoria = (Spinner) findViewById(R.id.spCategoria);
+        comentario = (EditText) findViewById(R.id.textComentario);
+        fecha = (EditText) findViewById(R.id.textFecha);
+        precio = (EditText) findViewById(R.id.textPrecio);
+
+
+        Calendar calendar = Calendar.getInstance();
+        final int year = calendar.get(Calendar.YEAR);
+        final int month = calendar.get(Calendar.MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+
+
+        fecha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        RegistrarGasto.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayofMonth) {
+                        month = month+1;
+                        String date;
+                        if(month<10 ){
+                            if(dayofMonth<10){
+                                date = year+"/0"+month+"/0"+dayofMonth;
+                            }else{
+                                date = year+"/0"+month+"/"+dayofMonth;
+                            }
+
+                        }   else {
+                            if(dayofMonth<10){
+                                date = year+"/"+month+"/0"+dayofMonth;
+                            }else{
+                                date = year+"/"+month+"/"+dayofMonth;
+                            }
+                        }
+
+                        fecha.setText(date);
+                    }
+                }, year, month, day);
+                datePickerDialog.show();
+
+            }
+        });
+
         //Datos para guardar gasto
 
         Button btnEnviar = (Button) findViewById(R.id.btnRegistrarGasto);
@@ -59,43 +105,34 @@ public class RegistrarGasto extends AppCompatActivity {
             public void onClick(View view) {
                 try {
                     //Inicializar variables
-                    tipoGasto = (Spinner) findViewById(R.id.spTipoDato);
-                    categoria = (Spinner) findViewById(R.id.spCategoria);
-                    comentario = (EditText) findViewById(R.id.textComentario);
-                    fecha = (EditText) findViewById(R.id.textFecha);
-                    precio = (EditText) findViewById(R.id.textPrecio);
+
                     int idUser = helper.consultarUsuarioSesion(correo);
                     int idPresupuesto = 0;
+                    String textTipoGasto = tipoGasto.getSelectedItem().toString();
+                    String textCategoria = categoria.getSelectedItem().toString();
+                    String textComentario = comentario.getText().toString();
+                    String textFecha = fecha.getText().toString();
+                    String textPrecio = precio.getText().toString();
 
-                    if (comentario.getText().toString() == "" || fecha.getText().toString() == "" || precio.getText().toString() == ""){
+                    if (textTipoGasto.equals("") || textCategoria.equals("") || textComentario.equals("") || textFecha.equals("") || textPrecio.equals("")){
                         Toast.makeText(RegistrarGasto.this, "No puede dejar los campos vacios", Toast.LENGTH_SHORT).show();
-                    }else {
-                        if (tipoGasto.getSelectedItem().toString() == "Tipo de gasto"){
+                    }else if (textTipoGasto.equals("Tipo de gasto") ){
                             Toast.makeText(RegistrarGasto.this, "Tiene que escoger un gasto distinto", Toast.LENGTH_SHORT).show();
 
-                        }
-                        if (categoria.getSelectedItem().toString() == "Categoría"){
+                    }else if (textCategoria.equals("Categoría") ){
                             Toast.makeText(RegistrarGasto.this, "Tiene que escoger una categoría distinta", Toast.LENGTH_SHORT).show();
 
-                        }
-                        if (comentario.getText().toString() == "Comentario corto"){
+                    }else if (textComentario.equals("")){
                             Toast.makeText(RegistrarGasto.this, "Tiene que agrega un comentario", Toast.LENGTH_SHORT).show();
 
-                        }
-                        if (fecha.getText().toString() == "DD/MM/AAAA"){
-                            Toast.makeText(RegistrarGasto.this, "Agrega la fecha en el formato DD/MM/AAAA", Toast.LENGTH_SHORT).show();
+                    }else if (textFecha.equals("")){
+                            Toast.makeText(RegistrarGasto.this, "Agrega una fecha", Toast.LENGTH_SHORT).show();
 
-                        }
-                        if (precio.getText().toString() == "Cantidad total"){
+                    }else if (textPrecio.equals("")){
                             Toast.makeText(RegistrarGasto.this, "Agrega el precio total", Toast.LENGTH_SHORT).show();
 
-                        }
-                        if (tipoGasto.getSelectedItem().toString() != "" && tipoGasto.getSelectedItem().toString() != "Tipo de gasto" && categoria.getSelectedItem().toString() != "" && categoria.getSelectedItem().toString() != "Categoría" && comentario.getText().toString() != "" && comentario.getText().toString() != "Comentario corto" && fecha.getText().toString() != "" && fecha.getText().toString() != "DD/MM/AAAA" && precio.getText().toString() != "" && precio.getText().toString() != "Cantidad total") {
-                            String textTipoGasto = tipoGasto.getSelectedItem().toString();
-                            String textCategoria = categoria.getSelectedItem().toString();
-                            String textComentario = comentario.getText().toString();
-                            String textFecha = fecha.getText().toString();
-                            String textPrecio = precio.getText().toString();
+                    }else if (tipoGasto.getSelectedItem().toString() != "" && tipoGasto.getSelectedItem().toString() != "Tipo de gasto" && categoria.getSelectedItem().toString() != "" && categoria.getSelectedItem().toString() != "Categoría" && comentario.getText().toString() != "" && comentario.getText().toString() != "Comentario corto" && fecha.getText().toString() != "" && fecha.getText().toString() != "DD/MM/AAAA" && precio.getText().toString() != "" && precio.getText().toString() != "Cantidad total") {
+
                             float numPrecio = Float.parseFloat(textPrecio); //Float.parseFloat(textPrecio);
 
                             helper.insertarGasto(textTipoGasto, textCategoria, textComentario, textFecha, numPrecio, idUser, idPresupuesto);
@@ -103,10 +140,10 @@ public class RegistrarGasto extends AppCompatActivity {
                             comentario.setText("");
                             fecha.setText("");
                             precio.setText("");
-                        }else {
+                    }else {
                             Toast.makeText(RegistrarGasto.this, "Favor de verificar la información", Toast.LENGTH_SHORT).show();
-                        }
                     }
+                    
                 }catch (Exception e){
                     Toast.makeText(RegistrarGasto.this, "Favor de verificar la información", Toast.LENGTH_SHORT).show();
                 }
