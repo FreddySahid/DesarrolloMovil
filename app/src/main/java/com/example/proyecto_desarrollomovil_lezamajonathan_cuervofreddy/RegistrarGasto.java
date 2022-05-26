@@ -143,7 +143,7 @@ public class RegistrarGasto extends AppCompatActivity {
                     }else {
                             Toast.makeText(RegistrarGasto.this, "Favor de verificar la información", Toast.LENGTH_SHORT).show();
                     }
-                    
+
                 }catch (Exception e){
                     Toast.makeText(RegistrarGasto.this, "Favor de verificar la información", Toast.LENGTH_SHORT).show();
                 }
