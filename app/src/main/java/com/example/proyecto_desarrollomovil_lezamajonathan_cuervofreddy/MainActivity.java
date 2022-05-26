@@ -194,7 +194,8 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, RegistrarGasto.class);
             startActivity(intent);
         }else if(id == R.id.opcion3){
-            Toast.makeText(this, "Opción 3", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(MainActivity.this, ModificarDatos.class);
+            startActivity(intent);
         }else if(id == R.id.opcion4){
             Toast.makeText(this, "Opción 4", Toast.LENGTH_LONG).show();
         }else if(id == R.id.opcion5){

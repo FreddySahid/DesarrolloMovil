@@ -15,7 +15,7 @@
         android:title="Registrar gasto"></item>
     <item
         android:id="@+id/opcion3"
-        android:title="Opción 3"></item>
+        android:title="Modificar datos"></item>
     <item
         android:id="@+id/opcion4"
         android:title="Opción 4"></item>
