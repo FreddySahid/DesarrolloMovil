@@ -157,7 +157,6 @@ public class SQLiteService extends SQLiteOpenHelper {
                 cv.put("correo", emailUser);
                 cv.put("contrasena", passwordUser);
 
-                BD.insert("usuarios", null, cv);
                 BD.update("usuarios", cv, "id = ?", new String[]{id});
                 return true;
             }
@@ -166,7 +165,6 @@ public class SQLiteService extends SQLiteOpenHelper {
                 cv.put("correo", emailUser);
                 cv.put("contrasena", passwordUser);
 
-                BD.insert("usuarios", null, cv);
                 BD.update("usuarios", cv, "id = ?", new String[]{id});
                 return true;
             }
@@ -175,7 +173,6 @@ public class SQLiteService extends SQLiteOpenHelper {
                 cv.put("nombre", nameUser);
                 cv.put("contrasena", passwordUser);
 
-                BD.insert("usuarios", null, cv);
                 BD.update("usuarios", cv, "id = ?", new String[]{id});
                 return true;
             }
@@ -184,15 +181,12 @@ public class SQLiteService extends SQLiteOpenHelper {
                 cv.put("nombre", nameUser);
                 cv.put("correo", emailUser);
 
-                BD.insert("usuarios", null, cv);
                 BD.update("usuarios", cv, "id = ?", new String[]{id});
                 return true;
             }
             if (!nameUser.isEmpty() && emailUser.isEmpty() && passwordUser.isEmpty()){ //Si solo necesita modificar nombre
                 ContentValues cv = new ContentValues();
                 cv.put("nombre", nameUser);
-
-                BD.insert("usuarios", null, cv);
                 BD.update("usuarios", cv, "id = ?", new String[]{id});
                 return true;
             }
@@ -200,7 +194,6 @@ public class SQLiteService extends SQLiteOpenHelper {
                 ContentValues cv = new ContentValues();
                 cv.put("correo", emailUser);
 
-                BD.insert("usuarios", null, cv);
                 BD.update("usuarios", cv, "id = ?", new String[]{id});
                 return true;
             }
@@ -208,7 +201,6 @@ public class SQLiteService extends SQLiteOpenHelper {
                 ContentValues cv = new ContentValues();
                 cv.put("contrasena", passwordUser);
 
-                BD.insert("usuarios", null, cv);
                 BD.update("usuarios", cv, "id = ?", new String[]{id});
                 return true;
             }
