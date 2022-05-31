@@ -18,7 +18,7 @@
         android:title="Modificar datos"></item>
     <item
         android:id="@+id/opcion4"
-        android:title="Opción 4"></item>
+        android:title="Historial de presupuestos"></item>
     <item
         android:id="@+id/opcion5"
         android:title="Historial de gastos"></item>

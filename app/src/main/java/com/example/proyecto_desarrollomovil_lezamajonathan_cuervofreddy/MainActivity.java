@@ -197,7 +197,8 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, ModificarDatos.class);
             startActivity(intent);
         }else if(id == R.id.opcion4){
-            Toast.makeText(this, "Opción 4", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(MainActivity.this, HistorialPresupuestoActivity.class);
+            startActivity(intent);
         }else if(id == R.id.opcion5){
             Toast.makeText(this, "Ya se encuentra ahí.", Toast.LENGTH_LONG).show();
         }else if (id == R.id.opcion6){

@@ -99,7 +99,7 @@ public class SQLiteService extends SQLiteOpenHelper {
 
     public ArrayList<Gasto> ConsultarGasto( int idUsuario, String gasto, String fecha1, String fecha2 ) throws ParseException {
         ArrayList<Gasto> listaGastoUsuario = new ArrayList<Gasto>();
-        Cursor cursor = BD.rawQuery("SELECT idGasto, tipogasto, categoria, comentario, fecha, precio, idusuario, idpresupuesto FROM gasto where idusuario = '"+idUsuario+"' AND tipogasto = '"+ gasto+ "' AND fecha BETWEEN '"+fecha1+"' AND '"+ fecha2+"'", null);
+        Cursor cursor = BD.rawQuery("SELECT idGasto, tipogasto, categoria, comentario, fecha, precio, idusuario, idpresupuesto FROM gasto where idusuario = '"+idUsuario+"' AND tipogasto = '"+ gasto+ "' AND fecha BETWEEN '"+fecha1+"' AND '"+ fecha2+"'  ORDER by fecha DESC", null);
         if(cursor != null && cursor.getCount()>0){
             cursor.moveToFirst();
             do{
@@ -218,5 +218,32 @@ public class SQLiteService extends SQLiteOpenHelper {
         }
     }
 
-    // @end modificar datos personales
+    //Consultar historial de presupuestos
+
+
+
+    public ArrayList<Presupuesto> ConsultarPresupuesto( int idUsuario, String tipo ) throws ParseException {
+        ArrayList<Presupuesto> listapresupuesto = new ArrayList<Presupuesto>();
+        Cursor cursor = BD.rawQuery("SELECT idpresupuesto, tipopresupuesto, saldo, iniciopresupuesto, finpresupuesto, meta, idusuario FROM presupuesto where idusuario = '"+idUsuario+"' AND tipopresupuesto = '"+ tipo + "' ORDER by iniciopresupuesto DESC ", null);
+        if(cursor != null && cursor.getCount()>0){
+            cursor.moveToFirst();
+            do{
+
+                int id = cursor.getInt(cursor.getColumnIndexOrThrow("idpresupuesto"));
+                String tipopresupuesto = cursor.getString(cursor.getColumnIndexOrThrow("tipopresupuesto"));
+                float saldo = cursor.getFloat(cursor.getColumnIndexOrThrow("saldo"));
+                String iniciopresupuesto = cursor.getString(cursor.getColumnIndexOrThrow("iniciopresupuesto"));
+                String finpresupuesto = cursor.getString(cursor.getColumnIndexOrThrow("finpresupuesto"));
+                float meta = cursor.getFloat(cursor.getColumnIndexOrThrow("meta"));
+                int idusuario = cursor.getInt(cursor.getColumnIndexOrThrow("idusuario"));
+
+                Presupuesto presupuesto = new Presupuesto(id, tipopresupuesto,saldo,iniciopresupuesto, finpresupuesto, meta, idusuario);
+
+                listapresupuesto.add(presupuesto);
+            }while (cursor.moveToNext());
+        }
+
+
+        return listapresupuesto;
+    }
 }
