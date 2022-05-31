@@ -128,7 +128,8 @@ public class SQLiteService extends SQLiteOpenHelper {
 
     //Buscar usuario
     public Usuario buscarUsuario(int id){
-        Usuario listDataUser = new Usuario();
+        //Usuario listDataUser = new Usuario();
+        Usuario user = new Usuario();
         Cursor cursor = BD.rawQuery("SELECT id, nombre, email, password FROM usuarios WHERE id = '" + id + "'", null);
         if (cursor != null && cursor.getCount()>0){
             cursor.moveToFirst();
@@ -137,14 +138,13 @@ public class SQLiteService extends SQLiteOpenHelper {
                 String email = cursor.getString(cursor.getColumnIndexOrThrow("email"));
                 String password = cursor.getString(cursor.getColumnIndexOrThrow("password"));
 
-                //Usuario user = new Usuario(id, nombre, email, password);
-                listDataUser.setId(id);
-                listDataUser.setNombre(nombre);
-                listDataUser.setEmail(email);
-                listDataUser.setPassword(password);
+                user.setId(id);
+                user.setNombre(nombre);
+                user.setEmail(email);
+                user.setPassword(password);
             } while (cursor.moveToNext());
         }
-        return listDataUser;
+        return user;
     }
 
     //Modificar datos

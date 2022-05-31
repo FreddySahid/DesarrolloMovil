@@ -64,6 +64,11 @@ public class ModificarDatos extends AppCompatActivity {
         pass = (EditText) findViewById(R.id.textPass);
         confPass = (EditText) findViewById(R.id.textConfPass);
 
+        /*Usuario user = helper.buscarUsuario(idUser);
+
+        name.setText(user.getNombre());
+        email.setText(user.getEmail());*/
+
         //Declarar variable de botón
         btnGuardarCambios = (Button) findViewById(R.id.btnGuardarCambios);
         btnGuardarCambios.setOnClickListener(new View.OnClickListener() {
@@ -74,21 +79,30 @@ public class ModificarDatos extends AppCompatActivity {
                 String passwordNueva = pass.getText().toString();
                 String confirmarPass = confPass.getText().toString();
                 String passwordUser = "";
+                boolean band = false;
 
                 if (!passwordNueva.equals(confirmarPass)){
                     Toast.makeText(ModificarDatos.this, "Error al confirmar contraseña", Toast.LENGTH_SHORT).show();
                 }else{
                     passwordUser = passwordNueva;
                 }
-                if (passwordNueva.equals(confirmarPass)){
-                    helper.modificarDatos(idUser, nameUser, emailUser, passwordUser);
-                    Toast.makeText(ModificarDatos.this, "Datos modificados", Toast.LENGTH_SHORT).show();
-                    name.setText("");
-                    email.setText("");
-                    pass.setText("");
-                    confPass.setText("");
+                if (nameUser.isEmpty() && emailUser.isEmpty() && passwordUser.isEmpty()) {
+                    Toast.makeText(ModificarDatos.this, "Datos no modificados", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(ModificarDatos.this, "Error al modificar datos", Toast.LENGTH_SHORT).show();
+                    if (passwordNueva.equals(confirmarPass)) {
+                        band = helper.modificarDatos(idUser, nameUser, emailUser, passwordUser);
+                        if (band){
+                            Toast.makeText(ModificarDatos.this, "Datos modificados", Toast.LENGTH_SHORT).show();
+                            name.setText("");
+                            email.setText("");
+                            pass.setText("");
+                            confPass.setText("");
+                        } else {
+                            Toast.makeText(ModificarDatos.this, "Error al modificar datos", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(ModificarDatos.this, "Error al modificar datos", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
