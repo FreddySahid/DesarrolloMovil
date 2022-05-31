@@ -194,13 +194,13 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, RegistrarGasto.class);
             startActivity(intent);
         }else if(id == R.id.opcion3){
-            Intent intent = new Intent(MainActivity.this, ModificarDatos.class);
-            startActivity(intent);
-        }else if(id == R.id.opcion4){
             Intent intent = new Intent(MainActivity.this, HistorialPresupuestoActivity.class);
             startActivity(intent);
-        }else if(id == R.id.opcion5){
+        }else if(id == R.id.opcion4){
             Toast.makeText(this, "Ya se encuentra ahí.", Toast.LENGTH_LONG).show();
+        }else if(id == R.id.opcion5){
+            Intent intent = new Intent(MainActivity.this, ModificarDatos.class);
+            startActivity(intent);
         }else if (id == R.id.opcion6){
             Intent intent = new Intent(MainActivity.this, MainLogin.class);
             startActivity(intent);

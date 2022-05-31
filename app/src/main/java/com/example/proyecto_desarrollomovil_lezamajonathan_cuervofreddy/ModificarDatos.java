@@ -111,12 +111,13 @@ public class ModificarDatos extends AppCompatActivity {
             Intent intent = new Intent(ModificarDatos.this, RegistrarGasto.class);
             startActivity(intent);
         }else if(id == R.id.opcion3){
-            Toast.makeText(this, "Usted ya se encuentra ahí", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(ModificarDatos.this, HistorialPresupuestoActivity.class);
+            startActivity(intent);
         }else if(id == R.id.opcion4){
-            Toast.makeText(this, "Opción 4", Toast.LENGTH_LONG).show();
-        }else if(id == R.id.opcion5){
             Intent intent = new Intent(ModificarDatos.this, MainActivity.class);
             startActivity(intent);
+        }else if(id == R.id.opcion5){
+            Toast.makeText(this, "Ya se encuentra ahí.", Toast.LENGTH_LONG).show();
         }else if (id == R.id.opcion6){
             Intent intent = new Intent(ModificarDatos.this, MainLogin.class);
             startActivity(intent);
