@@ -31,6 +31,9 @@ public class ModificarDatos extends AppCompatActivity {
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
 
+    String nombreOriginal;
+    String emailOriginal;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,25 +52,17 @@ public class ModificarDatos extends AppCompatActivity {
         String correo = preferences.getString("sesion", "");
         int idUser = helper.consultarUsuarioSesion(correo);
 
-        /*try {
-            Usuario user = helper.buscarUsuario(idUser);
-        }catch (Exception e){
-            Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
-        }*/
-
-
-        //System.out.print(user.getNombre() + user.getEmail() + user.getPassword());
-
         //Declarar las variables que se ocupan en la activity
         name = (EditText) findViewById(R.id.textNombre);
         email = (EditText) findViewById(R.id.textEmail);
         pass = (EditText) findViewById(R.id.textPass);
         confPass = (EditText) findViewById(R.id.textConfPass);
 
-        /*Usuario user = helper.buscarUsuario(idUser);
+        nombreOriginal = helper.buscarNombreUsuario(idUser);
+        emailOriginal = helper.buscarEmailUsuario(idUser);
 
-        name.setText(user.getNombre());
-        email.setText(user.getEmail());*/
+        name.setText(nombreOriginal);
+        email.setText(emailOriginal);
 
         //Declarar variable de botón
         btnGuardarCambios = (Button) findViewById(R.id.btnGuardarCambios);
@@ -81,6 +76,12 @@ public class ModificarDatos extends AppCompatActivity {
                 String passwordUser = "";
                 boolean band = false;
 
+                if (nombreOriginal.equals(nameUser)){
+                    nameUser = "";
+                }
+                if (emailOriginal.equals(emailUser)){
+                    emailUser = "";
+                }
                 if (!passwordNueva.equals(confirmarPass)){
                     Toast.makeText(ModificarDatos.this, "Error al confirmar contraseña", Toast.LENGTH_SHORT).show();
                 }else{
@@ -93,8 +94,8 @@ public class ModificarDatos extends AppCompatActivity {
                         band = helper.modificarDatos(idUser, nameUser, emailUser, passwordUser);
                         if (band){
                             Toast.makeText(ModificarDatos.this, "Datos modificados", Toast.LENGTH_SHORT).show();
-                            name.setText("");
-                            email.setText("");
+                            name.setText(helper.buscarNombreUsuario(idUser));
+                            email.setText(helper.buscarEmailUsuario(idUser));
                             pass.setText("");
                             confPass.setText("");
                         } else {

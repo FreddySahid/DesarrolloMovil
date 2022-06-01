@@ -127,24 +127,30 @@ public class SQLiteService extends SQLiteOpenHelper {
     // @Start Modificar datos personales
 
     //Buscar usuario
-    public Usuario buscarUsuario(int id){
-        //Usuario listDataUser = new Usuario();
-        Usuario user = new Usuario();
-        Cursor cursor = BD.rawQuery("SELECT id, nombre, email, password FROM usuarios WHERE id = '" + id + "'", null);
+    public String buscarNombreUsuario(int id){
+        String nombre = "";
+        Cursor cursor = BD.rawQuery("SELECT nombre FROM usuarios WHERE id = '" + id + "'", null);
         if (cursor != null && cursor.getCount()>0){
             cursor.moveToFirst();
             do{
-                String nombre = cursor.getString(cursor.getColumnIndexOrThrow("nombre"));
-                String email = cursor.getString(cursor.getColumnIndexOrThrow("email"));
-                String password = cursor.getString(cursor.getColumnIndexOrThrow("password"));
+                nombre = cursor.getString(cursor.getColumnIndexOrThrow("nombre"));
 
-                user.setId(id);
-                user.setNombre(nombre);
-                user.setEmail(email);
-                user.setPassword(password);
             } while (cursor.moveToNext());
         }
-        return user;
+        return nombre;
+    }
+
+    public String buscarEmailUsuario(int id){
+        String email = "";
+        Cursor cursor = BD.rawQuery("SELECT correo FROM usuarios WHERE id = '" + id + "'", null);
+        if (cursor != null && cursor.getCount()>0){
+            cursor.moveToFirst();
+            do{
+                email = cursor.getString(cursor.getColumnIndexOrThrow("correo"));
+
+            } while (cursor.moveToNext());
+        }
+        return email;
     }
 
     //Modificar datos
