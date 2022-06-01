@@ -143,7 +143,7 @@ public class RegistrarGasto extends AppCompatActivity {
                     }else {
                             Toast.makeText(RegistrarGasto.this, "Favor de verificar la información", Toast.LENGTH_SHORT).show();
                     }
-                    
+
                 }catch (Exception e){
                     Toast.makeText(RegistrarGasto.this, "Favor de verificar la información", Toast.LENGTH_SHORT).show();
                 }
@@ -167,11 +167,13 @@ public class RegistrarGasto extends AppCompatActivity {
         }else if(id == R.id.opcion2){
             Toast.makeText(this, "Ya se encuentra ahí.", Toast.LENGTH_LONG).show();
         }else if(id == R.id.opcion3){
-            Toast.makeText(this, "Opción 3", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(RegistrarGasto.this, HistorialPresupuestoActivity.class);
+            startActivity(intent);
         }else if(id == R.id.opcion4){
-            Toast.makeText(this, "Opción 4", Toast.LENGTH_LONG).show();
-        }else if(id == R.id.opcion5){
             Intent intent = new Intent(RegistrarGasto.this, MainActivity.class);
+            startActivity(intent);
+        }else if(id == R.id.opcion5){
+            Intent intent = new Intent(RegistrarGasto.this, ModificarDatos.class);
             startActivity(intent);
         }else if (id == R.id.opcion6){
             Intent intent = new Intent(RegistrarGasto.this, MainLogin.class);

@@ -6,12 +6,12 @@ public class Presupuesto {
     private int id;
     private String tipoPresupuesto;
     private float saldo;
-    private Date inicioPresupuesto;
-    private Date finPresupuesto;
+    private String inicioPresupuesto;
+    private String finPresupuesto;
     private float meta;
     private int idUsuario;
 
-    public Presupuesto(int id, String tipoPresupuesto, float saldo, Date inicioPresupuesto, Date finPresupuesto, float meta, int idUsuario) {
+    public Presupuesto(int id, String tipoPresupuesto, float saldo, String inicioPresupuesto, String finPresupuesto, float meta, int idUsuario) {
         this.id = id;
         this.tipoPresupuesto = tipoPresupuesto;
         this.saldo = saldo;
@@ -45,19 +45,19 @@ public class Presupuesto {
         this.saldo = saldo;
     }
 
-    public Date getInicioPresupuesto() {
+    public String getInicioPresupuesto() {
         return inicioPresupuesto;
     }
 
-    public void setInicioPresupuesto(Date inicioPresupuesto) {
+    public void setInicioPresupuesto(String inicioPresupuesto) {
         this.inicioPresupuesto = inicioPresupuesto;
     }
 
-    public Date getFinPresupuesto() {
+    public String getFinPresupuesto() {
         return finPresupuesto;
     }
 
-    public void setFinPresupuesto(Date finPresupuesto) {
+    public void setFinPresupuesto(String finPresupuesto) {
         this.finPresupuesto = finPresupuesto;
     }
 

@@ -183,11 +183,13 @@ public class PresupuestoActivity extends AppCompatActivity {
             Intent intent = new Intent(PresupuestoActivity.this, RegistrarGasto.class);
             startActivity(intent);
         }else if(id == R.id.opcion3){
-            Toast.makeText(this, "Opción 3", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(PresupuestoActivity.this, HistorialPresupuestoActivity.class);
+            startActivity(intent);
         }else if(id == R.id.opcion4){
-            Toast.makeText(this, "Opción 4", Toast.LENGTH_LONG).show();
-        }else if(id == R.id.opcion5){
             Intent intent = new Intent(PresupuestoActivity.this, MainActivity.class);
+            startActivity(intent);
+        }else if(id == R.id.opcion5){
+            Intent intent = new Intent(PresupuestoActivity.this, ModificarDatos.class);
             startActivity(intent);
         }else if (id == R.id.opcion6){
             Intent intent = new Intent(PresupuestoActivity.this, MainLogin.class);
