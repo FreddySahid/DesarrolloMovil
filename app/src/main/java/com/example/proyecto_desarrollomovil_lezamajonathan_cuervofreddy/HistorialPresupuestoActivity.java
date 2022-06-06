@@ -8,9 +8,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -78,6 +80,7 @@ public class HistorialPresupuestoActivity extends AppCompatActivity {
 
             ListView listaview = (ListView) findViewById(R.id.ListaPresupuestos);
             listaview.setAdapter(adaptador);
+            registerForContextMenu(listaview);
 
 
         }else{
@@ -100,10 +103,24 @@ public class HistorialPresupuestoActivity extends AppCompatActivity {
 
             ListView listaview = (ListView) findViewById(R.id.ListaPresupuestos);
             listaview.setAdapter(adaptador);
+            registerForContextMenu(listaview);
 
         }
 
 
+    }
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        getMenuInflater().inflate(R.menu.context_menu, menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        AdapterView.AdapterContextMenuInfo i = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+
+
+        return super.onContextItemSelected(item);
     }
 
     @Override
