@@ -120,6 +120,31 @@ public class SQLiteService extends SQLiteOpenHelper {
             }while (cursor.moveToNext());
         }
 
+        return listaGastoUsuario;
+    }
+
+    public ArrayList<Gasto> ConsultarGasto2( int idUsuario, String fecha1, String fecha2 ) throws ParseException {
+        ArrayList<Gasto> listaGastoUsuario = new ArrayList<Gasto>();
+        Cursor cursor = BD.rawQuery("SELECT idGasto, tipogasto, categoria, comentario, fecha, precio, idusuario, idpresupuesto FROM gasto where idusuario = '"+idUsuario+"'AND fecha BETWEEN '"+fecha1+"' AND '"+ fecha2+"'  ORDER by fecha DESC", null);
+        if(cursor != null && cursor.getCount()>0){
+            cursor.moveToFirst();
+            do{
+
+                int id = cursor.getInt(cursor.getColumnIndexOrThrow("idGasto"));
+                String tipogasto = cursor.getString(cursor.getColumnIndexOrThrow("tipogasto"));
+                String categoria = cursor.getString(cursor.getColumnIndexOrThrow("categoria"));
+                String comentario = cursor.getString(cursor.getColumnIndexOrThrow("comentario"));
+                String fecha = cursor.getString(cursor.getColumnIndexOrThrow("fecha"));
+                float precio = cursor.getFloat(cursor.getColumnIndexOrThrow("precio"));
+                int idusuario = cursor.getInt(cursor.getColumnIndexOrThrow("idusuario"));
+                int idpresupuesto = cursor.getInt(cursor.getColumnIndexOrThrow("idpresupuesto"));
+
+
+                Gasto canc = new Gasto(id, tipogasto, categoria, comentario,fecha, precio,idusuario,idpresupuesto );
+
+                listaGastoUsuario.add(canc);
+            }while (cursor.moveToNext());
+        }
 
         return listaGastoUsuario;
     }
@@ -223,6 +248,30 @@ public class SQLiteService extends SQLiteOpenHelper {
     public ArrayList<Presupuesto> ConsultarPresupuesto( int idUsuario, String tipo ) throws ParseException {
         ArrayList<Presupuesto> listapresupuesto = new ArrayList<Presupuesto>();
         Cursor cursor = BD.rawQuery("SELECT idpresupuesto, tipopresupuesto, saldo, iniciopresupuesto, finpresupuesto, meta, idusuario FROM presupuesto where idusuario = '"+idUsuario+"' AND tipopresupuesto = '"+ tipo + "' ORDER by iniciopresupuesto DESC ", null);
+        if(cursor != null && cursor.getCount()>0){
+            cursor.moveToFirst();
+            do{
+
+                int id = cursor.getInt(cursor.getColumnIndexOrThrow("idpresupuesto"));
+                String tipopresupuesto = cursor.getString(cursor.getColumnIndexOrThrow("tipopresupuesto"));
+                float saldo = cursor.getFloat(cursor.getColumnIndexOrThrow("saldo"));
+                String iniciopresupuesto = cursor.getString(cursor.getColumnIndexOrThrow("iniciopresupuesto"));
+                String finpresupuesto = cursor.getString(cursor.getColumnIndexOrThrow("finpresupuesto"));
+                float meta = cursor.getFloat(cursor.getColumnIndexOrThrow("meta"));
+                int idusuario = cursor.getInt(cursor.getColumnIndexOrThrow("idusuario"));
+
+                Presupuesto presupuesto = new Presupuesto(id, tipopresupuesto,saldo,iniciopresupuesto, finpresupuesto, meta, idusuario);
+
+                listapresupuesto.add(presupuesto);
+            }while (cursor.moveToNext());
+        }
+
+
+        return listapresupuesto;
+    }
+    public ArrayList<Presupuesto> ConsultarPresupuesto2( int idUsuario) throws ParseException {
+        ArrayList<Presupuesto> listapresupuesto = new ArrayList<Presupuesto>();
+        Cursor cursor = BD.rawQuery("SELECT idpresupuesto, tipopresupuesto, saldo, iniciopresupuesto, finpresupuesto, meta, idusuario FROM presupuesto where idusuario = '"+idUsuario+"' ORDER by iniciopresupuesto DESC ", null);
         if(cursor != null && cursor.getCount()>0){
             cursor.moveToFirst();
             do{

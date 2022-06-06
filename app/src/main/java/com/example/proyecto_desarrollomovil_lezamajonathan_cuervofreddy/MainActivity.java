@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -151,6 +152,27 @@ public class MainActivity extends AppCompatActivity {
         else if(gasto.equals("Tipo de gasto")){
             Toast.makeText(MainActivity.this, "Debe seleccionar un tipo de gasto", Toast.LENGTH_SHORT).show();
 
+        }else if (gasto.equals("Todos")){
+            try {
+
+                listaUsuario = BD.ConsultarGasto2(idUser, fechaInicio, fechafin);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+
+            ArrayList<String> listaUsuarioString = new ArrayList<String>(listaUsuario.size());
+            for(Gasto c: listaUsuario){
+                listaUsuarioString.add("Fecha: "+ c.getFecha() + "\nCategoría: "+c.getCategoria()+ "\nComentario: "+ c.getComentario() + "\nCosto: "+ c.getPrecio() + "\nTipo de gasto: " + c.getTipoGasto() );
+            }
+
+            ArrayAdapter<String> adaptador =  new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listaUsuarioString);
+
+
+
+            ListView listaview = (ListView) findViewById(R.id.ListaUsuarios);
+            listaview.setAdapter(adaptador);
+
         }else{
             try {
 
@@ -171,6 +193,13 @@ public class MainActivity extends AppCompatActivity {
 
             ListView listaview = (ListView) findViewById(R.id.ListaUsuarios);
             listaview.setAdapter(adaptador);
+
+            listaview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                }
+            });
 
         }
 

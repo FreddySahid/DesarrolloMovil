@@ -58,6 +58,28 @@ public class HistorialPresupuestoActivity extends AppCompatActivity {
         if(gasto.equals("Tipo de gasto")){
             Toast.makeText(HistorialPresupuestoActivity.this, "Debe seleccionar un tipo de presupuesto", Toast.LENGTH_SHORT).show();
 
+        }else if(gasto.equals("Todos")){
+            try {
+
+                listaPresupuesto = BD.ConsultarPresupuesto2(idUser);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+
+            ArrayList<String> listaUsuarioString = new ArrayList<String>(listaPresupuesto.size());
+            for(Presupuesto c: listaPresupuesto){
+                listaUsuarioString.add("Fecha inicial: "+ c.getInicioPresupuesto() + "\nFecha final: "+c.getFinPresupuesto()+ "\nSaldo: "+ c.getSaldo() + "\nMeta: "+ c.getMeta()+ "\nTipo de presupuesto: "+ c.getTipoPresupuesto() );
+            }
+
+            ArrayAdapter<String> adaptador =  new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listaUsuarioString);
+
+
+
+            ListView listaview = (ListView) findViewById(R.id.ListaPresupuestos);
+            listaview.setAdapter(adaptador);
+
+
         }else{
             try {
 
