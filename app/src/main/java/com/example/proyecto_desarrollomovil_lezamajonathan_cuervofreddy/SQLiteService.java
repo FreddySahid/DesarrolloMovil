@@ -180,7 +180,7 @@ public class SQLiteService extends SQLiteOpenHelper {
 
     //Modificar datos
     public boolean modificarDatos(int idUser, String nameUser, String emailUser, String passwordUser){
-        String id = Integer.toString(idUser);
+        String id = Integer.toString(idUser);//Revisar
         try{
             if (!nameUser.isEmpty() && !emailUser.isEmpty() && !passwordUser.isEmpty()){ //Si necesita modificar todos los datos
                 ContentValues cv = new ContentValues();
@@ -293,4 +293,7 @@ public class SQLiteService extends SQLiteOpenHelper {
 
         return listapresupuesto;
     }
+
+
+
 }

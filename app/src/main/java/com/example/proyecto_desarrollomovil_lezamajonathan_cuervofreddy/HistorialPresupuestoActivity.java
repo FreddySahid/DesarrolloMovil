@@ -32,6 +32,7 @@ public class HistorialPresupuestoActivity extends AppCompatActivity {
 
     Spinner tipoPresupuesto;
     int idUser;
+    ArrayList<Integer> listaPresupuestoInt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,12 +70,14 @@ public class HistorialPresupuestoActivity extends AppCompatActivity {
             }
 
 
-            ArrayList<String> listaUsuarioString = new ArrayList<String>(listaPresupuesto.size());
+            ArrayList<String> listaPresupuestoString = new ArrayList<String>(listaPresupuesto.size());
+            listaPresupuestoInt = new ArrayList<>(listaPresupuesto.size());
             for(Presupuesto c: listaPresupuesto){
-                listaUsuarioString.add("Fecha inicial: "+ c.getInicioPresupuesto() + "\nFecha final: "+c.getFinPresupuesto()+ "\nSaldo: "+ c.getSaldo() + "\nMeta: "+ c.getMeta()+ "\nTipo de presupuesto: "+ c.getTipoPresupuesto() );
+                listaPresupuestoString.add("Fecha inicial: "+ c.getInicioPresupuesto() + "\nFecha final: "+c.getFinPresupuesto()+ "\nSaldo: "+ c.getSaldo() + "\nMeta: "+ c.getMeta()+ "\nTipo de presupuesto: "+ c.getTipoPresupuesto() );
+                listaPresupuestoInt.add(c.getId());
             }
 
-            ArrayAdapter<String> adaptador =  new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listaUsuarioString);
+            ArrayAdapter<String> adaptador =  new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listaPresupuestoString);
 
 
 
@@ -93,8 +96,10 @@ public class HistorialPresupuestoActivity extends AppCompatActivity {
 
 
             ArrayList<String> listaUsuarioString = new ArrayList<String>(listaPresupuesto.size());
+            listaPresupuestoInt = new ArrayList<>(listaPresupuesto.size());
             for(Presupuesto c: listaPresupuesto){
                 listaUsuarioString.add("Fecha inicial: "+ c.getInicioPresupuesto() + "\nFecha final: "+c.getFinPresupuesto()+ "\nSaldo: "+ c.getSaldo() + "\nMeta: "+ c.getMeta() );
+                listaPresupuestoInt.add(c.getId());
             }
 
             ArrayAdapter<String> adaptador =  new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listaUsuarioString);
@@ -119,6 +124,14 @@ public class HistorialPresupuestoActivity extends AppCompatActivity {
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         AdapterView.AdapterContextMenuInfo i = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
 
+        int n = i.position;
+
+        switch (item.getItemId()) {
+            case R.id.context_delete:
+                Toast.makeText(HistorialPresupuestoActivity.this, "item: "+ listaPresupuestoInt.get(n), Toast.LENGTH_SHORT).show();
+            case R.id.context_editar:
+
+        }
 
         return super.onContextItemSelected(item);
     }
