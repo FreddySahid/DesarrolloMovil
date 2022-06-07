@@ -2,13 +2,15 @@
     <string name="app_name">MonyBox</string>
     <string-array name="Presupuesto">
         <item>Presupuesto</item>
-        <item>Efectivo</item>
+        <item>Todos</item>
         <item>Credito</item>
         <item>Debito</item>
+        <item>Efectivo</item>
     </string-array>
 
     <string-array name="tipo_gasto">
         <item>Tipo de gasto</item>
+        <item>Todos</item>
         <item>Crédito</item>
         <item>Débito</item>
         <item>Efectivo</item>
