@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     EditText fecha1;
     EditText fecha2;
     int idUser;
+    ArrayList<Integer> listaUsuarioString2;
 
 
 
@@ -163,8 +164,10 @@ public class MainActivity extends AppCompatActivity {
 
 
             ArrayList<String> listaUsuarioString = new ArrayList<String>(listaUsuario.size());
+            listaUsuarioString2 = new ArrayList<>(listaUsuario.size());
             for(Gasto c: listaUsuario){
-                listaUsuarioString.add("Fecha: "+ c.getFecha() + "\nCategoría: "+c.getCategoria()+ "\nComentario: "+ c.getComentario() + "\nCosto: "+ c.getPrecio() + "\nTipo de gasto: " + c.getTipoGasto() );
+                listaUsuarioString.add("ID: "+ c.getIdGasto()+" Fecha: "+ c.getFecha() + "\nCategoría: "+c.getCategoria()+ "\nComentario: "+ c.getComentario() + "\nCosto: "+ c.getPrecio() + "\nTipo de gasto: " + c.getTipoGasto() );
+                listaUsuarioString2.add(c.getIdGasto());
             }
 
             ArrayAdapter<String> adaptador =  new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listaUsuarioString);
@@ -185,8 +188,10 @@ public class MainActivity extends AppCompatActivity {
 
 
             ArrayList<String> listaUsuarioString = new ArrayList<String>(listaUsuario.size());
+            listaUsuarioString2 = new ArrayList<>(listaUsuario.size());
             for(Gasto c: listaUsuario){
-                listaUsuarioString.add("Fecha: "+ c.getFecha() + "\nCategoría: "+c.getCategoria()+ "\nComentario: "+ c.getComentario() + "\nCosto: "+ c.getPrecio() );
+                listaUsuarioString.add("ID: "+ c.getIdGasto()+" Fecha: "+ c.getFecha() + "\nCategoría: "+c.getCategoria()+ "\nComentario: "+ c.getComentario() + "\nCosto: "+ c.getPrecio() );
+                listaUsuarioString2.add(c.getIdGasto());
             }
 
             ArrayAdapter<String> adaptador =  new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listaUsuarioString);
@@ -196,13 +201,15 @@ public class MainActivity extends AppCompatActivity {
             ListView listaview = (ListView) findViewById(R.id.ListaUsuarios);
             listaview.setAdapter(adaptador);
 
-            /*listaview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            listaview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    registerForContextMenu(listaview);
+
 
                 }
-            });*/
-            registerForContextMenu(listaview);
+            });
+
 
         }
 
@@ -218,6 +225,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         AdapterView.AdapterContextMenuInfo i = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        int n = i.position;
+
+        switch (item.getItemId()) {
+            case R.id.context_delete:
+                Toast.makeText(MainActivity.this, "item: "+listaUsuarioString2.get(n), Toast.LENGTH_SHORT).show();
+
+
+
+        }
 
 
         return super.onContextItemSelected(item);
