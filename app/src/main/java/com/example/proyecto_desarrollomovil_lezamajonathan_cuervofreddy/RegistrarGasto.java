@@ -169,8 +169,6 @@ public class RegistrarGasto extends AppCompatActivity {
         if(id == R.id.opcion1){
             Intent intent = new Intent(RegistrarGasto.this, PresupuestoActivity.class);
             startActivity(intent);
-        }else if(id == R.id.opcion2){
-            Toast.makeText(this, "Ya se encuentra ahí.", Toast.LENGTH_LONG).show();
         }else if(id == R.id.opcion3){
             Intent intent = new Intent(RegistrarGasto.this, HistorialPresupuestoActivity.class);
             startActivity(intent);

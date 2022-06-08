@@ -251,9 +251,6 @@ public class MainActivity extends AppCompatActivity {
         if(id == R.id.opcion1){
             Intent intent = new Intent(MainActivity.this, PresupuestoActivity.class);
             startActivity(intent);
-        }else if(id == R.id.opcion2){
-            Intent intent = new Intent(MainActivity.this, RegistrarGasto.class);
-            startActivity(intent);
         }else if(id == R.id.opcion3){
             Intent intent = new Intent(MainActivity.this, HistorialPresupuestoActivity.class);
             startActivity(intent);

@@ -163,10 +163,8 @@ public class HistorialPresupuestoActivity extends AppCompatActivity {
         if(id == R.id.opcion1){
             Intent intent = new Intent(HistorialPresupuestoActivity.this, PresupuestoActivity.class);
             startActivity(intent);
-        }else if(id == R.id.opcion2){
-            Intent intent = new Intent(HistorialPresupuestoActivity.this, RegistrarGasto.class);
-            startActivity(intent);
-        }else if(id == R.id.opcion3){
+        }
+        else if(id == R.id.opcion3){
             Toast.makeText(this, "Ya se encuentra ahí.", Toast.LENGTH_LONG).show();
         }else if(id == R.id.opcion4){
             Intent intent = new Intent(HistorialPresupuestoActivity.this, MainActivity.class);
