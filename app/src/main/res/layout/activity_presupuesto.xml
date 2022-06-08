@@ -28,6 +28,7 @@
         app:layout_constraintVertical_bias="0.113"
         />
 
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -39,8 +40,7 @@
         app:layout_constraintHorizontal_bias="0.181"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.237" />
-
+        app:layout_constraintVertical_bias="0.206" />
 
     <TextView
         android:id="@+id/textView4"
@@ -94,19 +94,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.67" />
 
+
     <Spinner
         android:id="@+id/spinnerPresupuesto"
         android:layout_width="170dp"
         android:layout_height="46dp"
-        android:entries="@array/Presupuesto"
         android:backgroundTint="@color/green_500"
+        android:entries="@array/Presupuesto3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.933"
+        app:layout_constraintHorizontal_bias="0.937"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.213" />
-
+        app:layout_constraintVertical_bias="0.195" />
 
     <EditText
         android:id="@+id/txtSaldo"

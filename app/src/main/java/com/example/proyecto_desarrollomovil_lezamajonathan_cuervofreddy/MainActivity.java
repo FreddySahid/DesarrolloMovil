@@ -145,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, "Debe llenar todos los campos", Toast.LENGTH_SHORT).show();
 
         }
-        else if(gasto.equals("Tipo de gasto")){
+        else if(gasto.equals("Gasto")){
             Toast.makeText(MainActivity.this, "Debe seleccionar un tipo de gasto", Toast.LENGTH_SHORT).show();
 
         }else if (gasto.equals("Todos")){
@@ -227,12 +227,15 @@ public class MainActivity extends AppCompatActivity {
                 BD.borrargasto(listaGastoInt.get(n));
                 Toast.makeText(MainActivity.this, "Gasto eliminado", Toast.LENGTH_SHORT).show();
                 Buscar(null);
+                return true;
+            default:
+                return super.onContextItemSelected(item);
 
 
 
         }
 
-        return super.onContextItemSelected(item);
+
     }
 
     @Override

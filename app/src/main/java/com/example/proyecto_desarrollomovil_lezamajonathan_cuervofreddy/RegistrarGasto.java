@@ -123,7 +123,7 @@ public class RegistrarGasto extends AppCompatActivity {
                     }
                     if (textTipoGasto.equals("") || textCategoria.equals("") || textComentario.equals("") || textFecha.equals("") || textPrecio.equals("")){
                         Toast.makeText(RegistrarGasto.this, "No puede dejar los campos vacios", Toast.LENGTH_SHORT).show();
-                    }else if (textTipoGasto.equals("Tipo de gasto") ){
+                    }else if (textTipoGasto.equals("Gasto") ){
                             Toast.makeText(RegistrarGasto.this, "Tiene que escoger un gasto distinto", Toast.LENGTH_SHORT).show();
 
                     }else if (textCategoria.equals("Categoría") ){

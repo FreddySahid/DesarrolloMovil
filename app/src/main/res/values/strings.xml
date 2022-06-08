@@ -3,13 +3,13 @@
     <string-array name="Presupuesto">
         <item>Presupuesto</item>
         <item>Todos</item>
-        <item>Credito</item>
-        <item>Debito</item>
+        <item>Crédito</item>
+        <item>Débito</item>
         <item>Efectivo</item>
     </string-array>
 
     <string-array name="tipo_gasto">
-        <item>Tipo de gasto</item>
+        <item>Gasto</item>
         <item>Todos</item>
         <item>Crédito</item>
         <item>Débito</item>
@@ -31,8 +31,21 @@
     </string-array>
     <string-array name="Presupuesto2">
         <item>Presupuesto</item>
-        <item>Credito</item>
-        <item>Debito</item>
+        <item>Crédito</item>
+        <item>Débito</item>
+        <item>Efectivo</item>
+    </string-array>
+
+    <string-array name="Presupuesto3">
+        <item>Presupuesto</item>
+        <item>Crédito</item>
+        <item>Débito</item>
+        <item>Efectivo</item>
+    </string-array>
+    <string-array name="tipo_gasto2">
+        <item>Gasto</item>
+        <item>Crédito</item>
+        <item>Débito</item>
         <item>Efectivo</item>
     </string-array>
 </resources>

@@ -58,7 +58,7 @@ public class HistorialPresupuestoActivity extends AppCompatActivity {
 
         String gasto = tipoPresupuesto.getSelectedItem().toString();
 
-        if(gasto.equals("Tipo de gasto")){
+        if(gasto.equals("Presupuesto")){
             Toast.makeText(HistorialPresupuestoActivity.this, "Debe seleccionar un tipo de presupuesto", Toast.LENGTH_SHORT).show();
 
         }else if(gasto.equals("Todos")){
@@ -127,18 +127,22 @@ public class HistorialPresupuestoActivity extends AppCompatActivity {
         int n = i.position;
 
         switch (item.getItemId()) {
-            case R.id.context_delete:
-                BD.borrarPresupuesto(listaPresupuestoInt.get(n));
-                Toast.makeText(HistorialPresupuestoActivity.this, "Presupuesto eliminado ", Toast.LENGTH_SHORT).show();
-                BuscarPresupuesto(null);
             case R.id.context_editar:
                 Intent intent = new Intent(HistorialPresupuestoActivity.this, EditarPresupuesto.class);
                 intent.putExtra("idPresupuesto", listaPresupuestoInt.get(n));
                 startActivity(intent);
+                return true;
+            case R.id.context_delete:
+                BD.borrarPresupuesto(listaPresupuestoInt.get(n));
+                Toast.makeText(HistorialPresupuestoActivity.this, "Presupuesto eliminado ", Toast.LENGTH_SHORT).show();
+                BuscarPresupuesto(null);
+                return true;
+            default:
+                return super.onContextItemSelected(item);
 
         }
 
-        return super.onContextItemSelected(item);
+
     }
 
     @Override

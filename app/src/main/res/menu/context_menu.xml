@@ -4,5 +4,7 @@
        android:title="Borrar"/>
     <item android:id="@+id/context_editar"
         android:title="Editar"/>
+    <item android:id="@+id/context_nuevoGasto"
+        android:title="Agregar Gasto"/>
 
 </menu>
