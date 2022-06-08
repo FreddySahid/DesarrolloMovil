@@ -384,10 +384,10 @@ public class SQLiteService extends SQLiteOpenHelper {
         String id = Integer.toString(idPresupuesto);
         try{
             float nuevoSaldo = saldoNeto - precio;
-            if (nuevoSaldo <= 0){
+            if (nuevoSaldo < 0){
                 return false;
             }
-            if (nuevoSaldo > 0){
+            if (nuevoSaldo >= 0){
                 ContentValues cv = new ContentValues();
                 cv.put("saldo", nuevoSaldo);
                 BD.update("presupuesto", cv, "idpresupuesto = ?", new String[]{id});

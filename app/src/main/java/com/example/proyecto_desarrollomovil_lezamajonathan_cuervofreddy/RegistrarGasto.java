@@ -138,7 +138,7 @@ public class RegistrarGasto extends AppCompatActivity {
                         } else if (textPrecio.equals("")) {
                             Toast.makeText(RegistrarGasto.this, "Agrega el precio total", Toast.LENGTH_SHORT).show();
 
-                        } else if (tipoGasto.getSelectedItem().toString() != "" && tipoGasto.getSelectedItem().toString() != "Tipo de gasto" && categoria.getSelectedItem().toString() != "" && categoria.getSelectedItem().toString() != "Categoría" && comentario.getText().toString() != "" && comentario.getText().toString() != "Comentario corto" && fecha.getText().toString() != "" && fecha.getText().toString() != "DD/MM/AAAA" && precio.getText().toString() != "" && precio.getText().toString() != "Cantidad total" && band == false) {
+                        } else if (tipoGasto.getSelectedItem().toString() != "" && tipoGasto.getSelectedItem().toString() != "Tipo de gasto" && categoria.getSelectedItem().toString() != "" && categoria.getSelectedItem().toString() != "Categoría" && comentario.getText().toString() != "" && comentario.getText().toString() != "Comentario corto" && fecha.getText().toString() != "" && fecha.getText().toString() != "DD/MM/AAAA" && precio.getText().toString() != "" && precio.getText().toString() != "Cantidad total" && band == true) {
 
                             helper.insertarGasto(textTipoGasto, textCategoria, textComentario, textFecha, numPrecio, idUser, idPresupuesto);
                             Toast.makeText(RegistrarGasto.this, "Se han registrado el gasto", Toast.LENGTH_SHORT).show();
