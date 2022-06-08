@@ -45,7 +45,7 @@ public class MainLogin extends AppCompatActivity {
                         editor.putString("sesion",correo );
                         editor.apply();
 
-                        Intent intent = new Intent(MainLogin.this, MainActivity.class);
+                        Intent intent = new Intent(MainLogin.this, HistorialPresupuestoActivity.class);
                         startActivity(intent);
                     }
                     else{

@@ -177,9 +177,6 @@ public class PresupuestoActivity extends AppCompatActivity {
         int id = item.getItemId();
         if(id == R.id.opcion1){
             Toast.makeText(this, "Ya se encuentra ahí.", Toast.LENGTH_LONG).show();
-        }else if(id == R.id.opcion2){
-            Intent intent = new Intent(PresupuestoActivity.this, RegistrarGasto.class);
-            startActivity(intent);
         }else if(id == R.id.opcion3){
             Intent intent = new Intent(PresupuestoActivity.this, HistorialPresupuestoActivity.class);
             startActivity(intent);
