@@ -29,4 +29,10 @@
         <item>Vestimenta</item>
         <item>Otros</item>
     </string-array>
+    <string-array name="Presupuesto2">
+        <item>Presupuesto</item>
+        <item>Credito</item>
+        <item>Debito</item>
+        <item>Efectivo</item>
+    </string-array>
 </resources>

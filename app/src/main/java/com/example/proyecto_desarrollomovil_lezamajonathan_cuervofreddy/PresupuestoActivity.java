@@ -18,9 +18,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 public class PresupuestoActivity extends AppCompatActivity {
 
@@ -53,11 +51,11 @@ public class PresupuestoActivity extends AppCompatActivity {
 
 
         tipoPresupuesto = findViewById(R.id.spinnerPresupuesto);
-        saldo = findViewById(R.id.textSaldo);
+        saldo = findViewById(R.id.txtSaldo);
 
         inicioPresupuesto = findViewById(R.id.dateInicioPresupuesto);
         finPresupuesto = findViewById(R.id.dateFinPresupuesto);
-        meta = findViewById(R.id.textMeta);
+        meta = findViewById(R.id.txtMeta);
 
         Calendar calendar = Calendar.getInstance();
         final int year = calendar.get(Calendar.YEAR);

@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/ProyectoMovil/DesarrolloMovil/app/src/main/res/layout/activity_editar_presupuesto.xml" value="0.25" />
+        <entry key="..\:/ProyectoMovil/DesarrolloMovil/app/src/main/res/layout/activity_historial_presupuesto.xml" value="0.18645833333333334" />
+        <entry key="..\:/ProyectoMovil/DesarrolloMovil/app/src/main/res/layout/activity_modificar_datos.xml" value="0.18645833333333334" />
+        <entry key="..\:/ProyectoMovil/DesarrolloMovil/app/src/main/res/layout/activity_presupuesto.xml" value="0.18645833333333334" />
         <entry key="..\:/ProyectoMovil/DesarrolloMovil/app/src/main/res/layout/activity_registrar_gasto.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/DesarrolloMovil/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1785" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/DesarrolloMovil/app/src/main/res/layout/activity_historial_presupuesto.xml" value="0.18" />
@@ -13,9 +17,7 @@
         <entry key="..\:/Users/HP/AndroidStudioProjects/DesarrolloMovil/app/src/main/res/layout/activity_registro.xml" value="0.25" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/DesarrolloMovil/app/src/main/res/layout/toolbar.xml" value="0.15760869565217392" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/DesarrolloMovil/app/src/main/res/layout/toolbarmenu.xml" value="0.15760869565217392" />
-        <entry key="..\:/Users/HP/AndroidStudioProjects/DesarrolloMovil/app/src/main/res/menu/context_menu.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/DesarrolloMovil/app/src/main/res/menu/menu.xml" value="0.25" />
-        <entry key="..\:/Users/HP/AndroidStudioProjects/DesarrolloMovil/app/src/main/res/menu/menu_borrar.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/DesarrolloMovil/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.134" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/DesarrolloMovil/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.134" />
       </map>

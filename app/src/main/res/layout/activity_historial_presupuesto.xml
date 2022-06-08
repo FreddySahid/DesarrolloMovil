@@ -42,13 +42,10 @@
         app:layout_constraintVertical_bias="0.213" />
 
 
-
-
-
     <Spinner
         android:id="@+id/spTipoDatoPresupuesto"
         android:layout_width="170dp"
-        android:layout_height="46dp"
+        android:layout_height="48dp"
         android:entries="@array/Presupuesto"
         android:textAlignment="center"
         android:textSize="18sp"
