@@ -107,7 +107,7 @@ public class RegistrarGasto extends AppCompatActivity {
                     //Inicializar variables
 
                     int idUser = helper.consultarUsuarioSesion(correo);
-                    int idPresupuesto = 0;
+                    int idPresupuesto = (int) getIntent().getExtras().getSerializable("idPresupuesto");
                     String textTipoGasto = tipoGasto.getSelectedItem().toString();
                     String textCategoria = categoria.getSelectedItem().toString();
                     String textComentario = comentario.getText().toString();
@@ -120,35 +120,35 @@ public class RegistrarGasto extends AppCompatActivity {
                     band = helper.restarGasto(numPrecio, idPresupuesto);
                     if (band == false){
                         Toast.makeText(RegistrarGasto.this, "El precio del gasto supera al presupuesto", Toast.LENGTH_SHORT).show();
-                    }
-                    if (textTipoGasto.equals("") || textCategoria.equals("") || textComentario.equals("") || textFecha.equals("") || textPrecio.equals("")){
-                        Toast.makeText(RegistrarGasto.this, "No puede dejar los campos vacios", Toast.LENGTH_SHORT).show();
-                    }else if (textTipoGasto.equals("Gasto") ){
+                    } else {
+                        if (textTipoGasto.equals("") || textCategoria.equals("") || textComentario.equals("") || textFecha.equals("") || textPrecio.equals("")) {
+                            Toast.makeText(RegistrarGasto.this, "No puede dejar los campos vacios", Toast.LENGTH_SHORT).show();
+                        } else if (textTipoGasto.equals("Gasto")) {
                             Toast.makeText(RegistrarGasto.this, "Tiene que escoger un gasto distinto", Toast.LENGTH_SHORT).show();
 
-                    }else if (textCategoria.equals("Categoría") ){
+                        } else if (textCategoria.equals("Categoría")) {
                             Toast.makeText(RegistrarGasto.this, "Tiene que escoger una categoría distinta", Toast.LENGTH_SHORT).show();
 
-                    }else if (textComentario.equals("")){
+                        } else if (textComentario.equals("")) {
                             Toast.makeText(RegistrarGasto.this, "Tiene que agrega un comentario", Toast.LENGTH_SHORT).show();
 
-                    }else if (textFecha.equals("")){
+                        } else if (textFecha.equals("")) {
                             Toast.makeText(RegistrarGasto.this, "Agrega una fecha", Toast.LENGTH_SHORT).show();
 
-                    }else if (textPrecio.equals("")){
+                        } else if (textPrecio.equals("")) {
                             Toast.makeText(RegistrarGasto.this, "Agrega el precio total", Toast.LENGTH_SHORT).show();
 
-                    }else if (tipoGasto.getSelectedItem().toString() != "" && tipoGasto.getSelectedItem().toString() != "Tipo de gasto" && categoria.getSelectedItem().toString() != "" && categoria.getSelectedItem().toString() != "Categoría" && comentario.getText().toString() != "" && comentario.getText().toString() != "Comentario corto" && fecha.getText().toString() != "" && fecha.getText().toString() != "DD/MM/AAAA" && precio.getText().toString() != "" && precio.getText().toString() != "Cantidad total") {
+                        } else if (tipoGasto.getSelectedItem().toString() != "" && tipoGasto.getSelectedItem().toString() != "Tipo de gasto" && categoria.getSelectedItem().toString() != "" && categoria.getSelectedItem().toString() != "Categoría" && comentario.getText().toString() != "" && comentario.getText().toString() != "Comentario corto" && fecha.getText().toString() != "" && fecha.getText().toString() != "DD/MM/AAAA" && precio.getText().toString() != "" && precio.getText().toString() != "Cantidad total" && band == false) {
 
                             helper.insertarGasto(textTipoGasto, textCategoria, textComentario, textFecha, numPrecio, idUser, idPresupuesto);
                             Toast.makeText(RegistrarGasto.this, "Se han registrado el gasto", Toast.LENGTH_SHORT).show();
                             comentario.setText("");
                             fecha.setText("");
                             precio.setText("");
-                    }else {
+                        } else {
                             Toast.makeText(RegistrarGasto.this, "Favor de verificar la información", Toast.LENGTH_SHORT).show();
+                        }
                     }
-
                 }catch (Exception e){
                     Toast.makeText(RegistrarGasto.this, "Favor de verificar la información", Toast.LENGTH_SHORT).show();
                 }

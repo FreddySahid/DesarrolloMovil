@@ -388,6 +388,9 @@ public class SQLiteService extends SQLiteOpenHelper {
                 return false;
             }
             if (nuevoSaldo > 0){
+                ContentValues cv = new ContentValues();
+                cv.put("saldo", nuevoSaldo);
+                BD.update("presupuesto", cv, "idpresupuesto = ?", new String[]{id});
                 return true;
             }
             return false;

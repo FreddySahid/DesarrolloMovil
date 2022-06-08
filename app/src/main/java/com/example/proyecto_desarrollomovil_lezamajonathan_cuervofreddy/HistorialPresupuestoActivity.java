@@ -137,6 +137,11 @@ public class HistorialPresupuestoActivity extends AppCompatActivity {
                 Toast.makeText(HistorialPresupuestoActivity.this, "Presupuesto eliminado ", Toast.LENGTH_SHORT).show();
                 BuscarPresupuesto(null);
                 return true;
+            case R.id.context_nuevoGasto:
+                Intent intent1 = new Intent(HistorialPresupuestoActivity.this, RegistrarGasto.class);
+                intent1.putExtra("idPresupuesto", listaPresupuestoInt.get(n));
+                startActivity(intent1);
+                return true;
             default:
                 return super.onContextItemSelected(item);
 
