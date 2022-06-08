@@ -128,7 +128,9 @@ public class HistorialPresupuestoActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.context_delete:
-                Toast.makeText(HistorialPresupuestoActivity.this, "item: "+ listaPresupuestoInt.get(n), Toast.LENGTH_SHORT).show();
+                BD.borrarPresupuesto(listaPresupuestoInt.get(n));
+                Toast.makeText(HistorialPresupuestoActivity.this, "Presupuesto eliminado ", Toast.LENGTH_SHORT).show();
+                BuscarPresupuesto(null);
             case R.id.context_editar:
 
         }

@@ -160,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
             ArrayList<String> listaGastosString = new ArrayList<String>(listaGasto.size());
             listaGastoInt = new ArrayList<>(listaGasto.size());
             for(Gasto c: listaGasto){
-                listaGastosString.add(" Fecha: "+ c.getFecha() + "\nCategoría: "+c.getCategoria()+ "\nComentario: "+ c.getComentario() + "\nCosto: "+ c.getPrecio() + "\nTipo de gasto: " + c.getTipoGasto() );
+                listaGastosString.add("Fecha: "+ c.getFecha() + "\nCategoría: "+c.getCategoria()+ "\nComentario: "+ c.getComentario() + "\nCosto: "+ c.getPrecio() + "\nTipo de gasto: " + c.getTipoGasto() );
                 listaGastoInt.add(c.getIdGasto());
             }
 
@@ -185,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
             ArrayList<String> listaGastoString = new ArrayList<String>(listaGasto.size());
             listaGastoInt = new ArrayList<>(listaGasto.size());
             for(Gasto c: listaGasto){
-                listaGastoString.add(" Fecha: "+ c.getFecha() + "\nCategoría: "+c.getCategoria()+ "\nComentario: "+ c.getComentario() + "\nCosto: "+ c.getPrecio() );
+                listaGastoString.add("Fecha: "+ c.getFecha() + "\nCategoría: "+c.getCategoria()+ "\nComentario: "+ c.getComentario() + "\nCosto: "+ c.getPrecio() );
                 listaGastoInt.add(c.getIdGasto());
             }
 
@@ -200,7 +200,6 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     registerForContextMenu(listaview);
-
 
                 }
             });
@@ -224,7 +223,11 @@ public class MainActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.context_delete_gasto:
-                Toast.makeText(MainActivity.this, "item: "+ listaGastoInt.get(n), Toast.LENGTH_SHORT).show();
+
+                BD.borrargasto(listaGastoInt.get(n));
+                Toast.makeText(MainActivity.this, "Gasto eliminado", Toast.LENGTH_SHORT).show();
+                Buscar(null);
+
 
 
         }

@@ -294,6 +294,31 @@ public class SQLiteService extends SQLiteOpenHelper {
         return listapresupuesto;
     }
 
+    public boolean borrargasto(int idGasto){
+        String id = Integer.toString(idGasto);//Revisar
+        try{
+
+
+
+                BD.delete("gasto", "idGasto = ?", new String[]{id});
+                return true;
+
+        } catch (Exception e){
+            return false;
+        }
+    }
+    public boolean borrarPresupuesto(int idPresupuesto){
+        String id = Integer.toString(idPresupuesto);//Revisar
+        try{
+
+            BD.delete("presupuesto", "idpresupuesto = ?", new String[]{id});
+            return true;
+
+        } catch (Exception e){
+            return false;
+        }
+    }
+
 
 
 }
