@@ -114,6 +114,13 @@ public class RegistrarGasto extends AppCompatActivity {
                     String textFecha = fecha.getText().toString();
                     String textPrecio = precio.getText().toString();
 
+                    float numPrecio = Float.parseFloat(textPrecio); //Float.parseFloat(textPrecio);
+                    boolean band = false;
+
+                    band = helper.restarGasto(numPrecio, idPresupuesto);
+                    if (band == false){
+                        Toast.makeText(RegistrarGasto.this, "El precio del gasto supera al presupuesto", Toast.LENGTH_SHORT).show();
+                    }
                     if (textTipoGasto.equals("") || textCategoria.equals("") || textComentario.equals("") || textFecha.equals("") || textPrecio.equals("")){
                         Toast.makeText(RegistrarGasto.this, "No puede dejar los campos vacios", Toast.LENGTH_SHORT).show();
                     }else if (textTipoGasto.equals("Tipo de gasto") ){
@@ -132,8 +139,6 @@ public class RegistrarGasto extends AppCompatActivity {
                             Toast.makeText(RegistrarGasto.this, "Agrega el precio total", Toast.LENGTH_SHORT).show();
 
                     }else if (tipoGasto.getSelectedItem().toString() != "" && tipoGasto.getSelectedItem().toString() != "Tipo de gasto" && categoria.getSelectedItem().toString() != "" && categoria.getSelectedItem().toString() != "Categoría" && comentario.getText().toString() != "" && comentario.getText().toString() != "Comentario corto" && fecha.getText().toString() != "" && fecha.getText().toString() != "DD/MM/AAAA" && precio.getText().toString() != "" && precio.getText().toString() != "Cantidad total") {
-
-                            float numPrecio = Float.parseFloat(textPrecio); //Float.parseFloat(textPrecio);
 
                             helper.insertarGasto(textTipoGasto, textCategoria, textComentario, textFecha, numPrecio, idUser, idPresupuesto);
                             Toast.makeText(RegistrarGasto.this, "Se han registrado el gasto", Toast.LENGTH_SHORT).show();

@@ -130,6 +130,9 @@ public class HistorialPresupuestoActivity extends AppCompatActivity {
             case R.id.context_delete:
                 Toast.makeText(HistorialPresupuestoActivity.this, "item: "+ listaPresupuestoInt.get(n), Toast.LENGTH_SHORT).show();
             case R.id.context_editar:
+                Intent intent = new Intent(HistorialPresupuestoActivity.this, EditarPresupuesto.class);
+                intent.putExtra("idPresupuesto", listaPresupuestoInt.get(n));
+                startActivity(intent);
 
         }
 

@@ -21,6 +21,16 @@ public class Presupuesto {
         this.idUsuario = idUsuario;
     }
 
+    public Presupuesto(){
+        this.id = 0;
+        this.tipoPresupuesto = "";
+        this.saldo = 0;
+        this.inicioPresupuesto = "";
+        this.finPresupuesto = "";
+        this.meta = 0;
+        this.idUsuario = 0;
+    }
+
     public int getId() {
         return id;
     }

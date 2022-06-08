@@ -294,6 +294,81 @@ public class SQLiteService extends SQLiteOpenHelper {
         return listapresupuesto;
     }
 
+    // Modificar presupuesto
+    // Buscar presupuesto
+    public Presupuesto buscarPresupuesto (int idPresupuesto){
+        Presupuesto presupuesto = new Presupuesto();
+        Cursor cursor = BD.rawQuery("SELECT idpresupuesto, tipopresupuesto, saldo, iniciopresupuesto, finpresupuesto, meta, idusuario FROM presupuesto where idpresupuesto = '"+idPresupuesto+"'", null);
+        if (cursor != null && cursor.getCount()>0){
+            cursor.moveToFirst();
+            do {
 
+                String tipoPresupuesto = cursor.getString(cursor.getColumnIndexOrThrow("tipopresupuesto"));
+                float saldo = cursor.getFloat(cursor.getColumnIndexOrThrow("saldo"));
+                String iniciopresupuesto = cursor.getString(cursor.getColumnIndexOrThrow("iniciopresupuesto"));
+                String finpresupuesto = cursor.getString(cursor.getColumnIndexOrThrow("finpresupuesto"));
+                float meta = cursor.getFloat(cursor.getColumnIndexOrThrow("meta"));
+                int idUsuario = cursor.getInt(cursor.getColumnIndexOrThrow("idusuario"));
+
+                presupuesto.setId(idPresupuesto);
+                presupuesto.setTipoPresupuesto(tipoPresupuesto);
+                presupuesto.setSaldo(saldo);
+                presupuesto.setInicioPresupuesto(iniciopresupuesto);
+                presupuesto.setFinPresupuesto(finpresupuesto);
+                presupuesto.setMeta(meta);
+                presupuesto.setIdUsuario(idUsuario);
+
+            }while (cursor.moveToNext());
+        }
+        return presupuesto;
+    }
+
+    public boolean modificarPresupuesto(int idPresupuesto, String tipopresupuesto, float saldo, String iniciopresupuesto, String finpresupuesto, float meta){
+        String id = Integer.toString(idPresupuesto);//Revisar
+        try {
+            if (!tipopresupuesto.isEmpty() && saldo!=0 && !iniciopresupuesto.isEmpty() && !finpresupuesto.isEmpty() && meta!=0){ //Modificar todos los datos
+                ContentValues cv = new ContentValues();
+                cv.put("tipopresupuesto", tipopresupuesto);
+                cv.put("saldo", saldo);
+                cv.put("iniciopresupuesto", iniciopresupuesto);
+                cv.put("finpresupuesto", finpresupuesto);
+                cv.put("meta", meta);
+
+                BD.update("presupuesto", cv, "idpresupuesto = ?", new String[]{id});
+                return true;
+            }
+            return false;
+        } catch (Exception e){
+            return false;
+        }
+    }
+
+    public boolean restarGasto(float precio, int idPresupuesto){
+        // Primero obtener el saldo
+        float saldoNeto = 0;
+        Cursor cursor = BD.rawQuery("SELECT saldo FROM presupuesto where idpresupuesto = '"+idPresupuesto+"'", null);
+        if (cursor != null && cursor.getCount()>0){
+            cursor.moveToFirst();
+            do {
+                saldoNeto = cursor.getFloat(cursor.getColumnIndexOrThrow("saldo"));
+
+            }while (cursor.moveToNext());
+        }
+
+        // Segundo, restar el precio del gasto entrante
+        String id = Integer.toString(idPresupuesto);
+        try{
+            float nuevoSaldo = saldoNeto - precio;
+            if (nuevoSaldo <= 0){
+                return false;
+            }
+            if (nuevoSaldo > 0){
+                return true;
+            }
+            return false;
+        }catch (Exception e){
+            return false;
+        }
+    }
 
 }

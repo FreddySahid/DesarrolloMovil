@@ -109,7 +109,7 @@
 
 
     <EditText
-        android:id="@+id/textSaldo"
+        android:id="@+id/txtSaldo"
         android:layout_width="170dp"
         android:layout_height="46dp"
         android:backgroundTint="@color/green_500"
@@ -151,7 +151,7 @@
         app:layout_constraintVertical_bias="0.553" />
 
     <EditText
-        android:id="@+id/textMeta"
+        android:id="@+id/txtMeta"
         android:layout_width="170dp"
         android:layout_height="46dp"
         android:backgroundTint="@color/green_500"

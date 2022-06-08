@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Proyecto_DesarrolloMovil_LezamaJonathan_CuervoFreddy">
         <activity
+            android:name=".EditarPresupuesto"
+            android:exported="false" />
+        <activity
             android:name=".HistorialPresupuestoActivity"
             android:exported="false" />
         <activity
